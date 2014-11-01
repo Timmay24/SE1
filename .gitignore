@@ -92,3 +92,25 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+######################
+# Emacs #
+######################
+*~
+\#*\#
+.\#*
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+######################
+# Vim #
+######################
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
