@@ -7,6 +7,6 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		DepencyAssembler dAssembler = new DepencyAssembler();
+		DependencyAssembler dAssembler = new DependencyAssembler();
 	}
 }
