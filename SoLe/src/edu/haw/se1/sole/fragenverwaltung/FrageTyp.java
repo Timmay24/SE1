@@ -12,4 +12,8 @@ public enum FrageTyp {
 		this.id = id;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 }
