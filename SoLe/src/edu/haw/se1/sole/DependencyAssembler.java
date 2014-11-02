@@ -1,8 +1,8 @@
 package edu.haw.se1.sole;
 
-public class DepencyAssembler {
+public class DependencyAssembler {
 
-	public DepencyAssembler() {
+	public DependencyAssembler() {
 		// TODO Auto-generated constructor stub
 	}
 
