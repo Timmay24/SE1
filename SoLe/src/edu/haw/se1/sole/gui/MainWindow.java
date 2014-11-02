@@ -3,10 +3,15 @@ package edu.haw.se1.sole.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainWindow {
 
 	private JFrame frame;
+	private JButton btnVollDerButton;
 
 	/**
 	 * Launch the application.
@@ -38,6 +43,14 @@ public class MainWindow {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		btnVollDerButton = new JButton("VOLL der Button....");
+		btnVollDerButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+			}
+		});
+		frame.getContentPane().add(btnVollDerButton, BorderLayout.CENTER);
 	}
 
 }
