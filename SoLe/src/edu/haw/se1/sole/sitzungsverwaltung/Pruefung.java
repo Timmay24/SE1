@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Map;
 
 import edu.haw.se1.sole.common.ProzentTyp;
+import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
-import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
 
 public class Pruefung {
 
-	private Map<Integer, FrageBase> pruefungsFragen;
+	private Map<Integer, IFrage> pruefungsFragen;
 	private List<IFragenloesung> loesungen;
 	private ProzentTyp rating;
 
-	public Pruefung(Map<Integer, FrageBase> pruefungsFragen) {
+	public Pruefung(Map<Integer, IFrage> pruefungsFragen) {
 		this.pruefungsFragen = pruefungsFragen;
 		this.loesungen = new ArrayList<>();
 	}
@@ -34,6 +34,10 @@ public class Pruefung {
 		rating /= pointsOverall;
 		this.setRating(new ProzentTyp(rating));
 		return this.getRating();
+	}
+	
+	public IFrage getFrage(int id) {
+		return pruefungsFragen.get(id);
 	}
 
 	public ProzentTyp getRating() {

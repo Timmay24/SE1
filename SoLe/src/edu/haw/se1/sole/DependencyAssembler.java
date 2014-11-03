@@ -4,6 +4,8 @@ import edu.haw.se1.sole.belohnungssystem.Belohnungssystem;
 import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzerverwaltung;
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
+import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.common.PersistenceServiceStub;
 import edu.haw.se1.sole.fragenverwaltung.Fragenverwaltung;
 import edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung;
 import edu.haw.se1.sole.gruppenverwaltung.Gruppenverwaltung;
@@ -21,18 +23,20 @@ public class DependencyAssembler {
 	private IBelohnungssystem belohnungsSystem;
 	private IBenutzerverwaltung benutzerVerwaltung;
 	private IGruppenverwaltung gruppenVerwaltung;
+	private IPersistenceService persistenceService;
 
 	public DependencyAssembler() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void buildDependencies() {
-		this.modulVerwaltung = new Modulverwaltung();
-		this.fragenVerwaltung = new Fragenverwaltung(modulVerwaltung);
+	public void buildTestDependencies() {
+		this.persistenceService = new PersistenceServiceStub();
+		this.modulVerwaltung = new Modulverwaltung(persistenceService);
+		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
 		this.sitzungsVerwaltung = new Sitzungsverwaltung(fragenVerwaltung, modulVerwaltung);
-		this.belohnungsSystem = new Belohnungssystem();
-		this.benutzerVerwaltung = new Benutzerverwaltung(sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
-		this.gruppenVerwaltung = new Gruppenverwaltung(modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+		this.belohnungsSystem = new Belohnungssystem(persistenceService);
+		this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
+		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 
 	public IModulverwaltung getModulVerwaltung() {
