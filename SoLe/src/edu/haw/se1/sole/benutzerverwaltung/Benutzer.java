@@ -1,6 +1,5 @@
 package edu.haw.se1.sole.benutzerverwaltung;
 
-
 public class Benutzer {
 
 	private String 			benutzerkennung;
@@ -9,20 +8,23 @@ public class Benutzer {
 	private String 			name;
 	private String 			vorname;
 	private String 			geburtsdatum;
+//	private Date 			geburtsdatum;
 	private NutzerrollenTyp	nutzerrolle;
 	
-	public Benutzer() {
-		this.setBenutzerkennung("admin");
-		this.setPasswort("password");
-		this.setEmail("admin@sole.edu");
-		this.setName("Darfes");
-		this.setVorname("Admin");
-		this.setGeburtsdatum("13.03.2007");
-		this.setNutzerrolle(nutzerrolle);
-	}
+	private final String	BDAY_STRING = "dd.MM.yyyy";
 	
 	
-
+	/**
+	 * BASE CONSTRUCTOR
+	 * 
+	 * @param benutzerkennung
+	 * @param passwort
+	 * @param email
+	 * @param name
+	 * @param vorname
+	 * @param geburtsdatum
+	 * @param nutzerrolle
+	 */
 	public Benutzer(String benutzerkennung, String passwort, String email,
 			String name, String vorname, String geburtsdatum,
 			NutzerrollenTyp nutzerrolle) {
@@ -35,8 +37,17 @@ public class Benutzer {
 		this.setGeburtsdatum(geburtsdatum);
 		this.setNutzerrolle(nutzerrolle);
 	}
-
-
+	
+	// Shortcut to a sample user
+	public Benutzer() {
+		this.setBenutzerkennung("admin");
+		this.setPasswort("password");
+		this.setEmail("admin@sole.edu");
+		this.setName("Darfes");
+		this.setVorname("Admin");
+		this.setGeburtsdatum("13.03.2007");
+		this.setNutzerrolle(nutzerrolle);
+	}
 
 	/**
 	 * @return the benutzerkennung
@@ -118,14 +129,33 @@ public class Benutzer {
 	public String getGeburtsdatum() {
 		return geburtsdatum;
 	}
-
-	/**
-	 * @param geburtsdatum the geburtsdatum to set
-	 */
-	private void setGeburtsdatum(String geburtsdatum) {
-		//TODO: Umbasteln, dass korrektes Datum erzeugt wird, statt dass jeder String genommen wird.
-		this.geburtsdatum = geburtsdatum;
+	
+	private void setGeburtsdatum(String datum) {
+		this.geburtsdatum = datum;
 	}
+	
+	// TODO: korrektes Datumsformat sicherstellen
+//	/**
+//	 * @param geburtsdatum the geburtsdatum to set
+//	 */
+//	private boolean setGeburtsdatum(String geburtsdatum) {
+//		SimpleDateFormat sdf = new SimpleDateFormat(BDAY_STRING);
+//		
+//		try {
+//			setGeburtsdatum(sdf.parse(geburtsdatum));
+//			return true;
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
+	
+//	/**
+//	 * @param geburtsdatum
+//	 */
+//	private void setGeburtsdatum(Date geburtsdatum) {
+//		this.geburtsdatum = geburtsdatum;
+//	}
 
 	/**
 	 * @return the nutzerrolle
@@ -140,7 +170,39 @@ public class Benutzer {
 	private void setNutzerrolle(NutzerrollenTyp nutzerrolle) {
 		this.nutzerrolle = nutzerrolle;
 	}
-	
-	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((benutzerkennung == null) ? 0 : benutzerkennung.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Benutzer))
+			return false;
+		Benutzer other = (Benutzer) obj;
+		if (benutzerkennung == null) {
+			if (other.benutzerkennung != null)
+				return false;
+		} else if (!benutzerkennung.equals(other.benutzerkennung))
+			return false;
+		return true;
+	}
+
+	
+	
 }
