@@ -1,5 +1,7 @@
 package edu.haw.se1.sole.fragenverwaltung.frage.loesung;
 
+import java.util.Date;
+
 import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
@@ -10,6 +12,7 @@ public abstract class FragenloesungBase implements IFragenloesung {
 	
 	protected ProzentTyp rating;
 	protected IFrage frage;
+	protected Date bearbeitungsDatum;
 
 	protected FragenloesungBase() {
 	}
@@ -32,5 +35,13 @@ public abstract class FragenloesungBase implements IFragenloesung {
 	
 	public Schwierigkeitsgrad getSchwierigkeitsgrad() {
 		return frage.getSchwierigkeitsgrad();
+	}
+	
+	public Date getBearbeitungsDatum() {
+		return bearbeitungsDatum;
+	}
+	
+	protected void setBearbeitungsDatum(Date datum) {
+		this.bearbeitungsDatum = datum;
 	}
 }
