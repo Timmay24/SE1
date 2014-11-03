@@ -1,9 +1,23 @@
 package edu.haw.se1.sole.sitzungsverwaltung;
 
-public class Pruefungsergebnis {
+
+import edu.haw.se1.sole.common.ProzentTyp;
+import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
+
+public class Pruefungsergebnis extends Sitzungsergebnis {
+	
 
 	public Pruefungsergebnis() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+	
+	public void rateAndSaveLoesung(IFragenloesung fragenLoesung) {
+		fragenLoesung.rateLoesung();
+		this.getLoesungen().add(fragenLoesung);
 	}
 
+	public ProzentTyp ratePruefung() {
+		return this.rateSitzung();
+	}
+	
 }
