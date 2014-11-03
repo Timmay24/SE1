@@ -26,7 +26,7 @@ public class DependencyAssembler {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void buildDepencies() {
+	public void buildDependencies() {
 		this.modulVerwaltung = new Modulverwaltung();
 		this.fragenVerwaltung = new Fragenverwaltung(modulVerwaltung);
 		this.sitzungsVerwaltung = new Sitzungsverwaltung(fragenVerwaltung, modulVerwaltung);
