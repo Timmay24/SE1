@@ -38,7 +38,7 @@ public class Benutzer {
 		this.setNutzerrolle(nutzerrolle);
 	}
 	
-	// Shortcut to a sample user
+	// Shortcut to creating a sample user
 	public Benutzer() {
 		this.setBenutzerkennung("admin");
 		this.setPasswort("password");
@@ -73,7 +73,7 @@ public class Benutzer {
 	/**
 	 * @param passwort the passwort to set
 	 */
-	private void setPasswort(String passwort) {
+	public void setPasswort(String passwort) {
 		this.passwort = passwort;
 	}
 
@@ -105,7 +105,7 @@ public class Benutzer {
 	/**
 	 * @param name the name to set
 	 */
-	private void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -119,7 +119,7 @@ public class Benutzer {
 	/**
 	 * @param vorname the vorname to set
 	 */
-	private void setVorname(String vorname) {
+	public void setVorname(String vorname) {
 		this.vorname = vorname;
 	}
 
@@ -130,7 +130,7 @@ public class Benutzer {
 		return geburtsdatum;
 	}
 	
-	private void setGeburtsdatum(String datum) {
+	public void setGeburtsdatum(String datum) {
 		this.geburtsdatum = datum;
 	}
 	
@@ -167,7 +167,7 @@ public class Benutzer {
 	/**
 	 * @param nutzerrolle the nutzerrolle to set
 	 */
-	private void setNutzerrolle(NutzerrollenTyp nutzerrolle) {
+	public void setNutzerrolle(NutzerrollenTyp nutzerrolle) {
 		this.nutzerrolle = nutzerrolle;
 	}
 
