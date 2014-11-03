@@ -35,4 +35,28 @@ public class DependencyAssembler {
 		this.gruppenVerwaltung = new Gruppenverwaltung(modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 
+	public IModulverwaltung getModulVerwaltung() {
+		return modulVerwaltung;
+	}
+
+	public ISitzungsverwaltung getSitzungsVerwaltung() {
+		return sitzungsVerwaltung;
+	}
+
+	public IFragenverwaltung getFragenVerwaltung() {
+		return fragenVerwaltung;
+	}
+
+	public IBelohnungssystem getBelohnungsSystem() {
+		return belohnungsSystem;
+	}
+
+	public IBenutzerverwaltung getBenutzerVerwaltung() {
+		return benutzerVerwaltung;
+	}
+
+	public IGruppenverwaltung getGruppenVerwaltung() {
+		return gruppenVerwaltung;
+	}
+
 }
