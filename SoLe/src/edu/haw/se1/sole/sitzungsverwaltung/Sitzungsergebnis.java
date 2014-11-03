@@ -12,7 +12,7 @@ public class Sitzungsergebnis {
 	private ProzentTyp rating;
 
 	public Sitzungsergebnis() {
-		this.setLoesungen(new ArrayList<>());
+		this.setLoesungen(new ArrayList<IFragenloesung>());
 	}
 	
 	public void rateAndSaveLoesung(IFragenloesung fragenLoesung) {
