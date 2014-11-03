@@ -1,50 +1,12 @@
 package edu.haw.se1.sole.sitzungsverwaltung;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
-import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
 
-public class Pruefung {
-
-	private Map<Integer, IFrage> pruefungsFragen;
-	private List<IFragenloesung> loesungen;
-	private ProzentTyp rating;
+public class Pruefung extends Sitzung {
 
 	public Pruefung(Map<Integer, IFrage> pruefungsFragen) {
-		this.pruefungsFragen = pruefungsFragen;
-		this.loesungen = new ArrayList<>();
-	}
-	
-	public void rateAndSaveLoesung(IFragenloesung fragenLoesung) {
-		fragenLoesung.rateLoesung();
-		this.loesungen.add(fragenLoesung);
-	}
-	
-	public ProzentTyp ratePruefung() {
-		double rating = 0.0;
-		double pointsOverall = 0.0;
-		for (IFragenloesung loesung : loesungen) {
-			rating += loesung.getRating().getPercent() * loesung.getSchwierigkeitsgrad().getSchwierigkeit();
-			pointsOverall += loesung.getSchwierigkeitsgrad().getSchwierigkeit();
-		}
-		rating /= pointsOverall;
-		this.setRating(new ProzentTyp(rating));
-		return this.getRating();
-	}
-	
-	public IFrage getFrage(int id) {
-		return pruefungsFragen.get(id);
-	}
-
-	public ProzentTyp getRating() {
-		return rating;
-	}
-
-	private void setRating(ProzentTyp rating) {
-		this.rating = rating;
+		super(pruefungsFragen);
 	}
 }
