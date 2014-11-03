@@ -26,10 +26,12 @@ public class Pruefung {
 	
 	public ProzentTyp ratePruefung() {
 		double rating = 0.0;
+		double pointsOverall = 0.0;
 		for (IFragenloesung loesung : loesungen) {
-			rating += loesung.getRating().getPercent();
+			rating += loesung.getRating().getPercent() * loesung.getSchwierigkeitsgrad().getSchwierigkeit();
+			pointsOverall += loesung.getSchwierigkeitsgrad().getSchwierigkeit();
 		}
-		rating /= loesungen.size();
+		rating /= pointsOverall;
 		this.setRating(new ProzentTyp(rating));
 		return this.getRating();
 	}
@@ -41,5 +43,4 @@ public class Pruefung {
 	private void setRating(ProzentTyp rating) {
 		this.rating = rating;
 	}
-
 }

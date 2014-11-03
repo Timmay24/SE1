@@ -22,7 +22,7 @@ public class ProzentTyp {
 		Locale locale = Locale.getDefault();
 		percentFormatter = NumberFormat.getPercentInstance(locale);
 		percentOut = percentFormatter.format(getPercent());
-		return percentOut + "   " + locale.toString();
+		return percentOut;
 	}
 	
 	public ProzentTyp add(ProzentTyp otherPercent) {
@@ -49,5 +49,4 @@ public class ProzentTyp {
 	public void setPercent(double percent) {
 		this.percent = percent;
 	}
-
 }
