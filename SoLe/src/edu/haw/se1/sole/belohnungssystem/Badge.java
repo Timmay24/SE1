@@ -6,32 +6,55 @@ public class Badge {
 	private String beschreibung;
 	private String bildPfad;
 
+	/**
+	 * @param name
+	 * @param beschreibung
+	 * @param bildPfad
+	 */
 	public Badge(String name, String beschreibung, String bildPfad) {
 		this.setName(name);
 		this.setBeschreibung(beschreibung);
 		this.setBildPfad(bildPfad);
 	}
 
+	/**
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * @param name
+	 */
 	private void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * @return
+	 */
 	public String getBeschreibung() {
 		return beschreibung;
 	}
 
+	/**
+	 * @param beschreibung
+	 */
 	private void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getBildPfad() {
 		return bildPfad;
 	}
 
+	/**
+	 * @param bildPfad
+	 */
 	private void setBildPfad(String bildPfad) {
 		this.bildPfad = bildPfad;
 	}
