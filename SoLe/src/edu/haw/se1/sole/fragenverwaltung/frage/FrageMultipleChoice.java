@@ -7,7 +7,7 @@ import edu.haw.se1.sole.modulverwaltung.Modul;
 
 public class FrageMultipleChoice extends FrageBase {
 
-	public FrageMultipleChoice(String fragestellung, Modul modul, Schwierigkeitsgrad schwierigkeit, MusterloesungMultipleChoice musterLoesung) {
+	public FrageMultipleChoice(String fragestellung, Modul modul, SchwierigkeitsgradTyp schwierigkeit, MusterloesungMultipleChoice musterLoesung) {
 		super(fragestellung, modul, schwierigkeit);
 		this.musterLoesung = musterLoesung;
 	}

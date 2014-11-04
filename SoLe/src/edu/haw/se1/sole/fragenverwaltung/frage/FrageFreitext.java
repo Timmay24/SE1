@@ -7,7 +7,7 @@ import edu.haw.se1.sole.modulverwaltung.Modul;
 
 public class FrageFreitext extends FrageBase {
 
-	public FrageFreitext(String fragestellung, Modul modul, MusterloesungFreitext musterLoesung, Schwierigkeitsgrad schwierigkeit) {
+	public FrageFreitext(String fragestellung, Modul modul, MusterloesungFreitext musterLoesung, SchwierigkeitsgradTyp schwierigkeit) {
 		super(fragestellung, modul, schwierigkeit);
 		this.musterLoesung = musterLoesung;
 	}

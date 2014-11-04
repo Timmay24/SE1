@@ -5,7 +5,9 @@ package edu.haw.se1.sole.benutzerverwaltung;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EmailTyp {
+import edu.haw.se1.sole.common.Immutable;
+
+public class EMailTyp implements Immutable {
 	private String 	email;
 	private Pattern pattern;
 	private Matcher matcher;
@@ -14,10 +16,10 @@ public class EmailTyp {
 		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	
-	public EmailTyp(String email) {
+	public EMailTyp(String email) {
 		pattern = Pattern.compile(EMAIL_PATTERN);
 		if (validate(email))
-			this.setEmail(email);
+			this.email = email;
 		else
 			throw new IllegalStateException("Ungueltige Email-Adresse.");
 	}
@@ -41,13 +43,6 @@ public class EmailTyp {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
-	private void setEmail(String email) {
-		this.email = email;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -68,9 +63,9 @@ public class EmailTyp {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof EmailTyp))
+		if (!(obj instanceof EMailTyp))
 			return false;
-		EmailTyp other = (EmailTyp) obj;
+		EMailTyp other = (EMailTyp) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;

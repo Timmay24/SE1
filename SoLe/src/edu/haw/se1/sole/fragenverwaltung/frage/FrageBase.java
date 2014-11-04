@@ -8,10 +8,10 @@ public abstract class FrageBase implements IFrage {
 
 	protected MusterloesungBase musterLoesung;
 	private Modul modul;
-	private Schwierigkeitsgrad schwierigkeit;
+	private SchwierigkeitsgradTyp schwierigkeit;
 	private String fragestellung;
 
-	protected FrageBase(String fragestellung, Modul modul, Schwierigkeitsgrad schwierigkeit) {
+	protected FrageBase(String fragestellung, Modul modul, SchwierigkeitsgradTyp schwierigkeit) {
 		this.setFragestellung(fragestellung);
 		this.modul = modul;
 		this.setSchwierigkeitsgrad(schwierigkeit);
@@ -42,11 +42,11 @@ public abstract class FrageBase implements IFrage {
 		this.fragestellung = fragestellung;
 	}
 
-	public Schwierigkeitsgrad getSchwierigkeitsgrad() {
+	public SchwierigkeitsgradTyp getSchwierigkeitsgrad() {
 		return schwierigkeit;
 	}
 
-	public void setSchwierigkeitsgrad(Schwierigkeitsgrad schwierigkeit) {
+	public void setSchwierigkeitsgrad(SchwierigkeitsgradTyp schwierigkeit) {
 		this.schwierigkeit = schwierigkeit;
 	}
 	

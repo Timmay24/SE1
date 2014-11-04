@@ -3,7 +3,7 @@ package edu.haw.se1.sole.fragenverwaltung.frage.loesung;
 import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
-import edu.haw.se1.sole.fragenverwaltung.frage.Schwierigkeitsgrad;
+import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 
 
 public abstract class FragenloesungBase implements IFragenloesung {
@@ -30,7 +30,7 @@ public abstract class FragenloesungBase implements IFragenloesung {
 		this.frage = frage;
 	}
 	
-	public Schwierigkeitsgrad getSchwierigkeitsgrad() {
+	public SchwierigkeitsgradTyp getSchwierigkeitsgrad() {
 		return frage.getSchwierigkeitsgrad();
 	}
 }

@@ -4,7 +4,7 @@ public class Benutzer {
 
 	private String 			benutzerkennung;
 	private String 			passwort;
-	private EmailTyp		email;
+	private EMailTyp		email;
 	private String 			name;
 	private String 			vorname;
 	private String 			geburtsdatum;
@@ -80,19 +80,19 @@ public class Benutzer {
 	/**
 	 * @return the email
 	 */
-	public EmailTyp getEmail() {
+	public EMailTyp getEmail() {
 		return email;
 	}
 
 	/**
 	 * @param email the email to set
 	 */
-	public void setEmail(EmailTyp email) {
+	public void setEmail(EMailTyp email) {
 		this.email = email;
 	}
 	
 	public void setEmail(String email) {
-		this.email = new EmailTyp(email);
+		this.email = new EMailTyp(email);
 	}
 
 	/**

@@ -2,12 +2,12 @@ package edu.haw.se1.sole.fragenverwaltung;
 
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageSingleChoice;
-import edu.haw.se1.sole.fragenverwaltung.frage.Schwierigkeitsgrad;
+import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingleChoice;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 import edu.haw.se1.sole.modulverwaltung.Modul;
 
-public class Fragenverwaltung implements IFragenverwaltung, IPersistenceService {
+public class Fragenverwaltung implements IFragenverwaltung {
 
 	private IModulverwaltung modulVerwaltung;
 	private IPersistenceService persistenceService;
@@ -17,7 +17,7 @@ public class Fragenverwaltung implements IFragenverwaltung, IPersistenceService 
 		this.modulVerwaltung = modulVerwaltung;
 	}
 	
-	public IFrage buildFrageSingleChoice(String fragestellung, Modul modul, Schwierigkeitsgrad schwierigkeit, MusterloesungSingleChoice musterLoesung) {
+	public IFrage buildFrageSingleChoice(String fragestellung, Modul modul, SchwierigkeitsgradTyp schwierigkeit, MusterloesungSingleChoice musterLoesung) {
 		return new FrageSingleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 

@@ -25,7 +25,7 @@ public class Sitzungsergebnis {
 		double pointsOverall = 0.0;
 		for (IFragenloesung loesung : getLoesungen()) {
 			rating += loesung.getRating().getPercent() * loesung.getSchwierigkeitsgrad().getSchwierigkeit();
-			pointsOverall += loesung.getSchwierigkeitsgrad().getSchwierigkeit();
+			pointsOverall += loesung.getSchwierigkeitsgrad().getSchwierigkeit(); 
 		}
 		rating /= pointsOverall;
 		this.setRating(new ProzentTyp(rating));

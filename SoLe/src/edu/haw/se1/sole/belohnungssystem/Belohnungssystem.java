@@ -5,7 +5,7 @@ import java.util.Map;
 
 import edu.haw.se1.sole.common.IPersistenceService;
 
-public class Belohnungssystem implements IBelohnungssystem, IPersistenceService {
+public class Belohnungssystem implements IBelohnungssystem {
 	
 	private Map<String, Badge> badges;
 	private IPersistenceService persistenceService;

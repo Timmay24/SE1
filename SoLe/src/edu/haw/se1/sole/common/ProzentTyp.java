@@ -3,17 +3,13 @@ package edu.haw.se1.sole.common;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class ProzentTyp {
+public class ProzentTyp implements Immutable {
 
 	private double percent;
 
 	public ProzentTyp(double percent) {
-		this.setPercent(percent);
-		if(percent > 1.0 || percent < 0.0) {
-			throw new IllegalArgumentException();
-		}
+		this.percent = percent;
 	}
-	
 	
 	@Override
 	public String toString() {
@@ -43,10 +39,6 @@ public class ProzentTyp {
 
 	public double getPercent() {
 		return percent;
-	}
-
-	private void setPercent(double percent) {
-		this.percent = percent;
 	}
 
 

@@ -15,5 +15,4 @@ public class Sitzung {
 	public IFrage getFrage(int id) {
 		return sitzungsFragen.get(id);
 	}
-
 }

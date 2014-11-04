@@ -1,7 +1,7 @@
 package edu.haw.se1.sole.fragenverwaltung;
 
 import edu.haw.se1.sole.common.ProzentTyp;
-import edu.haw.se1.sole.fragenverwaltung.frage.Schwierigkeitsgrad;
+import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 
 public interface IFragenloesung {
 
@@ -9,5 +9,5 @@ public interface IFragenloesung {
 	
 	public ProzentTyp getRating();
 	
-	public Schwierigkeitsgrad getSchwierigkeitsgrad();
+	public SchwierigkeitsgradTyp getSchwierigkeitsgrad();
 }
