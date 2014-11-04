@@ -5,14 +5,14 @@ public class Fragestellung {
 	private String frageStellung;
 
 	public Fragestellung(String frageStellung) {
-		this.frageStellung = frageStellung;
+		this.setFrageStellung(frageStellung);
 	}
 
 	public String getFrageStellung() {
 		return frageStellung;
 	}
 
-	public void setFrageStellung(String frageStellung) {
+	private void setFrageStellung(String frageStellung) {
 		this.frageStellung = frageStellung;
 	}
 
