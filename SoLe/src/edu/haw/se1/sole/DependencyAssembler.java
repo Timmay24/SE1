@@ -33,7 +33,7 @@ public class DependencyAssembler {
 		this.persistenceService = new PersistenceServiceStub();
 		this.modulVerwaltung = new Modulverwaltung(persistenceService);
 		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
-		this.sitzungsVerwaltung = new Sitzungsverwaltung(fragenVerwaltung, modulVerwaltung);
+		this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
 		this.belohnungsSystem = new Belohnungssystem(persistenceService);
 		this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
 		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);

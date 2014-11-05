@@ -6,10 +6,11 @@ import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 
 public class Sitzungsverwaltung implements ISitzungsverwaltung {
 
+	private IPersistenceService persistenceService;
 	private IFragenverwaltung fragenVerwaltung;
 	private IModulverwaltung modulVerwaltung;
 
-	public Sitzungsverwaltung(IFragenverwaltung fragenVerwaltung, IModulverwaltung modulVerwaltung) {
+	public Sitzungsverwaltung(IPersistenceService persistenceService, IFragenverwaltung fragenVerwaltung, IModulverwaltung modulVerwaltung) {
 		this.fragenVerwaltung = fragenVerwaltung;
 		this.modulVerwaltung = modulVerwaltung;
 	}
