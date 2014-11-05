@@ -10,7 +10,6 @@ import edu.haw.se1.sole.common.Immutable;
 public class EMailTyp implements Immutable {
 	private String 	email;
 	private Pattern pattern;
-	private Matcher matcher;
  
 	private static final String EMAIL_PATTERN = 
 		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -32,7 +31,7 @@ public class EMailTyp implements Immutable {
 	 * @return true valid email, false invalid email
 	 */
 	public boolean validate(final String email) {
-		matcher = pattern.matcher(email);
+		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
 

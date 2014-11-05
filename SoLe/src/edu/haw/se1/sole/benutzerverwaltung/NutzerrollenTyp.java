@@ -14,5 +14,4 @@ public enum NutzerrollenTyp {
 	public int getId() {
 		return id;
 	}
-
 }

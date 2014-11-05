@@ -12,9 +12,9 @@ public class Badge {
 	 * @param bildPfad
 	 */
 	public Badge(String name, String beschreibung, String bildPfad) {
-		this.setName(name);
-		this.setBeschreibung(beschreibung);
-		this.setBildPfad(bildPfad);
+		this.name = name;
+		this.beschreibung = beschreibung;
+		this.bildPfad = bildPfad;
 	}
 
 	/**
@@ -25,13 +25,6 @@ public class Badge {
 	}
 	
 	/**
-	 * @param name
-	 */
-	private void setName(String name) {
-		this.name = name;
-	}
-	
-	/**
 	 * @return
 	 */
 	public String getBeschreibung() {
@@ -39,24 +32,10 @@ public class Badge {
 	}
 
 	/**
-	 * @param beschreibung
-	 */
-	private void setBeschreibung(String beschreibung) {
-		this.beschreibung = beschreibung;
-	}
-
-	/**
 	 * @return
 	 */
 	public String getBildPfad() {
 		return bildPfad;
-	}
-
-	/**
-	 * @param bildPfad
-	 */
-	private void setBildPfad(String bildPfad) {
-		this.bildPfad = bildPfad;
 	}
 
 	/* (non-Javadoc)

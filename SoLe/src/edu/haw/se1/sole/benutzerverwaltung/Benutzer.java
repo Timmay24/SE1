@@ -29,7 +29,7 @@ public class Benutzer {
 			String name, String vorname, String geburtsdatum,
 			NutzerrollenTyp nutzerrolle) {
 		
-		this.setBenutzerkennung(benutzerkennung);
+		this.benutzerkennung = benutzerkennung;
 		this.setPasswort(passwort);
 		this.setEmail(email);
 		this.setName(name);
@@ -40,7 +40,7 @@ public class Benutzer {
 	
 	// Shortcut to creating a sample user
 	public Benutzer() {
-		this.setBenutzerkennung("admin");
+		this.benutzerkennung = "admin";
 		this.setPasswort("password");
 		this.setEmail("admin@sole.edu");
 		this.setName("Darfes");
@@ -54,13 +54,6 @@ public class Benutzer {
 	 */
 	public String getBenutzerkennung() {
 		return benutzerkennung;
-	}
-
-	/**
-	 * @param benutzerkennung the benutzerkennung to set
-	 */
-	private void setBenutzerkennung(String benutzerkennung) {
-		this.benutzerkennung = benutzerkennung;
 	}
 
 	/**

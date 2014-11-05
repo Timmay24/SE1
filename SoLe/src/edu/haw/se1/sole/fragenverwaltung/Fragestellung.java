@@ -5,15 +5,11 @@ public class Fragestellung {
 	private String frageStellung;
 
 	public Fragestellung(String frageStellung) {
-		this.setFrageStellung(frageStellung);
+		this.frageStellung = frageStellung;
 	}
 
 	public String getFrageStellung() {
 		return frageStellung;
-	}
-
-	private void setFrageStellung(String frageStellung) {
-		this.frageStellung = frageStellung;
 	}
 
 	@Override
