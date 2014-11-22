@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+eclipse {
+      jdt {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+      }
+    }
+
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+		flatDir {
+			dirs 'lib'
+		}
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+    }
+}
+
+sourceSets.main.java.srcDirs = ["src/"]
+
+springBoot {
+	mainClass = "edu.haw.se1.sole.Main"
+}
+
+jar {
+    baseName = 'SoLe'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework:spring-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    runtime files('lib/ojdbc7.jar')
+	runtime fileTree(dir: 'lib', include: '*.jar')
+    testCompile("junit:junit")
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+    }
