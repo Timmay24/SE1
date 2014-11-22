@@ -26,7 +26,4 @@ public class Belohnungssystem implements IBelohnungssystem {
 	public Badge getBadge(String name) {
 		return badges.get(name); 
 	}
-	
-	
-
 }

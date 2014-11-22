@@ -73,6 +73,4 @@ public class ProzentTyp implements Immutable {
 			return false;
 		return true;
 	}
-	
-	
 }
