@@ -21,4 +21,22 @@ public class Fragenverwaltung implements IFragenverwaltung {
 		return new FrageSingleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 
+	@Override
+	public IFrage createFrageMultipleChoice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IMusterloesung createMusterloesungMultipleChoice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean saveFrage(IFrage frage) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
