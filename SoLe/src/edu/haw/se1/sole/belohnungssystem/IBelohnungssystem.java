@@ -44,4 +44,6 @@ public interface IBelohnungssystem {
 	 * @param lerngruppe Zu überprüfende Lerngruppe
 	 */
 	public void updateBadgesFor(ILerngruppe lerngruppe);
+
+	boolean validateBadge(IBadge badge);
 }

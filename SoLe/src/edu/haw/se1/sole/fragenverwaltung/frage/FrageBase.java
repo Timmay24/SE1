@@ -37,10 +37,10 @@ public abstract class FrageBase implements IFrage {
 	/**
 	 * @return true, wenn Invariante der Instanz nicht verletzt wird
 	 */
-	public boolean invariant()
+	private boolean invariant()
 	{
 		if (this.getFragestellung() != null)
-		if (this.getFragestellung().isEmpty())
+		if (!this.getFragestellung().isEmpty())
 		if (this.getMusterLoesung() != null)
 		if (this.getSchwierigkeitsgrad() != null)
 			return true;

@@ -50,7 +50,23 @@ public class Modulverwaltung implements IModulverwaltung {
 	 * @see edu.haw.se1.sole.modulverwaltung.IModulverwaltung#getModule()
 	 */
 	@Override
-	public List<IModul> getModule() {
+	public List<IModul> getModule()
+	{
 		return module;
 	}
+
+	@Override
+	public boolean validateModul(IModul modul)
+	{
+		return modul.validateModul();
+	}
+
+	@Override
+	public boolean saveModul(IModul modul)
+	{
+		// MOCK
+		return true;
+	}
+	
+	
 }

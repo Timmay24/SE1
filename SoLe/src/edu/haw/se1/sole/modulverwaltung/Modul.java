@@ -24,6 +24,18 @@ public class Modul implements IModul {
 	/** OPERATIONS */
 	
 	public boolean validateModul() {
+		return invariant();
+	}
+	
+	private boolean invariant() {
+		if (this.bezeichnung != null)
+		if (!this.bezeichnung.isEmpty())
+		if (this.studiengang != null)
+		if (!this.studiengang.isEmpty())
+		if (this.schule != null)
+		if (!this.schule.isEmpty())
+			return true;
+		
 		return false;
 	}
 	

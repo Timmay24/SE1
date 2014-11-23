@@ -92,7 +92,8 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public boolean saveFrage(IFrage frage)
 	{
-		return false;
+		// MOCK
+		return true;
 	}
 	
 	@Override
@@ -105,8 +106,6 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	public Antwort antwort(String antwort, boolean korrekt) {
 		return new Antwort(antwort, korrekt);
 	}
-	
-	
 	
 	
 	/** MOCK SECTION */

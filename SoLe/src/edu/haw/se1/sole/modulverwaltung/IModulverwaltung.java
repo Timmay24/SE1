@@ -12,5 +12,9 @@ public interface IModulverwaltung {
 	public abstract IModul getModulBy(String bezeichnung);
 
 	public abstract List<IModul> getModule();
+	
+	public abstract boolean validateModul(IModul modul);
+	
+	public boolean saveModul(IModul modul);
 
 }

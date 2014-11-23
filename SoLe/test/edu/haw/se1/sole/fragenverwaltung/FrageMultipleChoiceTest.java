@@ -27,14 +27,17 @@ public class FrageMultipleChoiceTest {
 				fv.antwort("3", true),
 				fv.antwort("4", false));
 		
-		IMusterloesung ml = fv.createMusterloesungMultipleChoice(antworten);
+		IMusterloesung musterloesung = fv.createMusterloesungMultipleChoice(antworten);
 		
-		IFrage f = fv.createFrageMultipleChoice("is das gut?", mv.mockModul(), new SchwierigkeitsgradTyp(1), ml);
+		// Erstellung der Frage
+		IFrage frage = fv.createFrageMultipleChoice("Is das gut?", mv.mockModul(), new SchwierigkeitsgradTyp(1), musterloesung);
 		
-		IFragenloesung fl = fv.createFragenloesungMultipleChoice(antworten, f);
+		// Validierung der Frage
+		assertTrue(fv.validateFrage(frage));
 		
-		fl.bewerteLoesung();
-		System.out.println(fl.getBewertung()); // 10.000% ... lol
+		// Aufforderung zur Sicherung in der DB, wenn Validierung erfolgreich
+		assertTrue(fv.saveFrage(frage));
+		
 		
 	}
 

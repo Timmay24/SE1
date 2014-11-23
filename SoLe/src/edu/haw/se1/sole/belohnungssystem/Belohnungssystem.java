@@ -31,6 +31,11 @@ public class Belohnungssystem implements IBelohnungssystem {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public boolean validateBadge(IBadge badge) {
+		return badge.validate();
+	}
 
 	@Override
 	public boolean saveBadge(IBadge badge) {
