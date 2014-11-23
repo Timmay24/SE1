@@ -55,8 +55,8 @@ public class Fragenverwaltung implements IFragenverwaltung {
 		return new FrageFreitext(
 				"freitext",
 				modul,
-				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))),
-				new SchwierigkeitsgradTyp(5));
+				new SchwierigkeitsgradTyp(5),
+				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))));
 	}
 	
 	@Override

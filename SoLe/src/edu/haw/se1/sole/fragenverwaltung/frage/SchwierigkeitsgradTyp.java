@@ -5,18 +5,17 @@ public class SchwierigkeitsgradTyp {
 	private int schwierigkeit;
 
 	public SchwierigkeitsgradTyp(int schwierigkeit) {
-		checkInvariant();
 		this.schwierigkeit = schwierigkeit;
+		invariant();
 	}
 
 	public int getSchwierigkeit() {
 		return schwierigkeit;
 	}
 	
-	private void checkInvariant() {
-		if (0 > schwierigkeit || 10 < schwierigkeit) {
-			throw new IllegalArgumentException("Die Schwierigkeit muss zwischen 1 und 10 liegen.");
-		}
+	private void invariant() {
+		if (0 > schwierigkeit || 10 < schwierigkeit)
+			throw new IllegalStateException("Die Schwierigkeit muss zwischen 1 und 10 liegen.");
 	}
 
 	/* (non-Javadoc)

@@ -15,6 +15,24 @@ public class Badge implements IBadge {
 		this.name = name;
 		this.beschreibung = beschreibung;
 		this.bildPfad = bildPfad;
+		
+		if (!invariant())
+			throw new IllegalStateException();
+	}
+	
+	@Override
+	public boolean validate() {
+		return invariant();
+	}
+
+	private boolean invariant() {
+		if (this.beschreibung != null)
+		if (!this.beschreibung.isEmpty())
+		if (this.name != null)
+		if (!this.name.isEmpty())
+			return true;
+		
+		return false;
 	}
 
 	/* (non-Javadoc)
@@ -71,20 +89,4 @@ public class Badge implements IBadge {
 			return false;
 		return true;
 	}
-
-	@Override
-	public boolean validate() {
-		return invariant();
-	}
-
-	private boolean invariant() {
-		if (this.beschreibung != null)
-		if (!this.beschreibung.isEmpty())
-		if (this.name != null)
-		if (!this.name.isEmpty())
-			return true;
-		
-		return false;
-	}
-	
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import edu.haw.se1.sole.DependencyAssembler;
@@ -17,9 +18,16 @@ public class FrageMultipleChoiceTest {
     private IFragenverwaltung fragenVerwaltung;
     private IModulverwaltung modulVerwaltung;
 
+    @Before
+    public void setUp() {
+        da = new DependencyAssembler();
+		da.buildDependencies();
+		fragenVerwaltung = da.getFragenVerwaltung();
+		modulVerwaltung = da.getModulVerwaltung();
+    }
+    
     @Test
 	public void testFrageMultipleChoiceWithCorrectInputIsValid() {
-		setUp();
 		List<Antwort> antworten = Arrays.asList(
 				fragenVerwaltung.antwort("1", false),
 				fragenVerwaltung.antwort("2", false),
@@ -29,12 +37,5 @@ public class FrageMultipleChoiceTest {
 		IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
 		fragenVerwaltung.createFrageMultipleChoice("Is das gut?", modulVerwaltung.createModul("Mocking", "SE1"), new SchwierigkeitsgradTyp(1), musterloesung);
 	}
-
-    private void setUp() {
-        da = new DependencyAssembler();
-		da.buildDependencies();
-		fragenVerwaltung = da.getFragenVerwaltung();
-		modulVerwaltung = da.getModulVerwaltung();
-    }
 
 }

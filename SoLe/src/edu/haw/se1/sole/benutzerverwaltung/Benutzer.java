@@ -29,24 +29,50 @@ public class Benutzer implements IBenutzer {
 			String name, String vorname, String geburtsdatum,
 			NutzerrollenTyp nutzerrolle) {
 		
-		this.benutzerkennung = benutzerkennung;
-		this.setPasswort(passwort);
-		this.setEmail(email);
-		this.setName(name);
-		this.setVorname(vorname);
-		this.setGeburtsdatum(geburtsdatum);
-		this.setNutzerrolle(nutzerrolle);
+		setBenutzerkennung(benutzerkennung);
+		setPasswort(passwort);
+		setEmail(email);
+		setName(name);
+		setVorname(vorname);
+		setGeburtsdatum(geburtsdatum);
+		setNutzerrolle(nutzerrolle);
+		
+		if (!invariant())
+			throw new IllegalStateException();
 	}
 	
-	// Shortcut to creating a sample user
+	// Shortcut to creating a sample user named 'admin'
 	public Benutzer() {
-		this.benutzerkennung = "admin";
-		this.setPasswort("password");
-		this.setEmail("admin@sole.edu");
-		this.setName("Darfes");
-		this.setVorname("Admin");
-		this.setGeburtsdatum("13.03.2007");
-		this.setNutzerrolle(nutzerrolle);
+		setBenutzerkennung("admin");
+		setPasswort("password");
+		setEmail("admin@sole.edu");
+		setName("Darfes");
+		setVorname("Admin");
+		setGeburtsdatum("13.03.2007");
+		setNutzerrolle(nutzerrolle);
+	}
+	
+	public boolean validate() {
+		return invariant();
+	}
+	
+	private boolean invariant() {
+		if (getBenutzerkennung() != null)
+		if (!getBenutzerkennung().isEmpty())
+		if (getPasswort() != null)
+		if (!getPasswort().isEmpty())
+//		if (!getPassword().size() > 5)
+		if (getEmail() != null)
+		if (getVorname() != null)
+		if (!getVorname().isEmpty())
+		if (getName() != null)
+		if (!getName().isEmpty())
+		if (getGeburtsdatum() != null)
+		if (!getGeburtsdatum().isEmpty())
+		if (getNutzerrolle() != null)
+			return true;
+		
+		return false;
 	}
 
 	/* (non-Javadoc)
@@ -55,6 +81,10 @@ public class Benutzer implements IBenutzer {
 	@Override
 	public String getBenutzerkennung() {
 		return benutzerkennung;
+	}
+	
+	private void setBenutzerkennung(String benutzerkennung) {
+		this.benutzerkennung = benutzerkennung;
 	}
 
 	/* (non-Javadoc)

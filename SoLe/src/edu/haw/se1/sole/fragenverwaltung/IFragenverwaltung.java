@@ -7,8 +7,6 @@ import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public interface IFragenverwaltung {
 
-	//FRAGE: "Konkrete" Klassen als Rückgaben bei Fragenloesung verwenden um Typ einzugrenzen, oder Interface IFragenloesung nutzen?
-	
 	/** FREITEXT */
 
 	/**

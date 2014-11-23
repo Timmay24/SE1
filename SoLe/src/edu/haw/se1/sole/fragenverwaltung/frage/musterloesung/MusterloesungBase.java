@@ -12,7 +12,7 @@ public abstract class MusterloesungBase implements IMusterloesung {
 	protected MusterloesungBase(List<Antwort> loesung) {
 		this.loesung = loesung;
 		if (!invariant())
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 	}
 	
 	/**

@@ -19,7 +19,7 @@ public class Antwort {
         this.antwort = antwort;
 		this.korrekt = korrekt;
 		if (!invariant())
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 	}
 	
 	public Antwort(String antwort, boolean korrekt) {
@@ -81,6 +81,7 @@ public class Antwort {
         return antwort_id;
     }
 
+    //TIM: notwendig? und vor allem: public?
     public void setAntwort_id(int antwort_id) {
         this.antwort_id = antwort_id;
     }
@@ -89,6 +90,7 @@ public class Antwort {
         return frage_id;
     }
 
+    //TIM: notwendig? und vor allem: public?
     public void setFrage_id(int frage_id) {
         this.frage_id = frage_id;
     }

@@ -24,6 +24,9 @@ public abstract class FrageBase implements IFrage {
 		this.setModul(modul);
 		this.setSchwierigkeitsgrad(schwierigkeit);
 		this.setMusterLoesung(musterLoesung);
+		
+		if (!invariant())
+			throw new IllegalStateException();
 	}
 	
 	/* (non-Javadoc)
@@ -32,6 +35,7 @@ public abstract class FrageBase implements IFrage {
 	public boolean validate()
 	{
 	    // because indirection? xD
+        //TIM: because... what?
 		return invariant();
 	}
 	
