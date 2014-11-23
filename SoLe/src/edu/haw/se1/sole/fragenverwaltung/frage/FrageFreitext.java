@@ -7,7 +7,7 @@ public class FrageFreitext extends FrageBase {
 
 	public FrageFreitext(String fragestellung, IModul modul, MusterloesungFreitext musterLoesung, SchwierigkeitsgradTyp schwierigkeit)
 	{
-		super(fragestellung, modul, schwierigkeit);
+		super(fragestellung, modul, schwierigkeit, musterLoesung);
 		this.musterLoesung = musterLoesung;
 	}
 }

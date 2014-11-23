@@ -4,10 +4,7 @@ import java.util.List;
 
 public interface IModulverwaltung {
 
-	public abstract IModul createModul(String bezeichnung, String studiengang,
-			String schule);
-
-	public abstract IModul mockModul();
+	public abstract IModul createModul(String bezeichnung, String studiengang);
 
 	public abstract IModul getModulBy(String bezeichnung);
 

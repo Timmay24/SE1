@@ -13,32 +13,28 @@ import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 
 public class FrageMultipleChoiceTest {
 
-	@Test
-	public void testCreateFrageMultipleChoice() {
-		
-		DependencyAssembler da = new DependencyAssembler();
-		da.buildTestDependencies();
-		IFragenverwaltung fv = da.getFragenVerwaltung();
-		IModulverwaltung mv = da.getModulVerwaltung();
-		
+	private DependencyAssembler da;
+    private IFragenverwaltung fragenVerwaltung;
+    private IModulverwaltung modulVerwaltung;
+
+    @Test
+	public void testFrageMultipleChoiceWithCorrectInputIsValid() {
+		setUp();
 		List<Antwort> antworten = Arrays.asList(
-				fv.antwort("1", false),
-				fv.antwort("2", false),
-				fv.antwort("3", true),
-				fv.antwort("4", false));
+				fragenVerwaltung.antwort("1", false),
+				fragenVerwaltung.antwort("2", false),
+				fragenVerwaltung.antwort("3", true),
+				fragenVerwaltung.antwort("4", false));
 		
-		IMusterloesung musterloesung = fv.createMusterloesungMultipleChoice(antworten);
-		
-		// Erstellung der Frage
-		IFrage frage = fv.createFrageMultipleChoice("Is das gut?", mv.mockModul(), new SchwierigkeitsgradTyp(1), musterloesung);
-		
-		// Validierung der Frage
-		assertTrue(fv.validateFrage(frage));
-		
-		// Aufforderung zur Sicherung in der DB, wenn Validierung erfolgreich
-		assertTrue(fv.saveFrage(frage));
-		
-		
+		IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
+		fragenVerwaltung.createFrageMultipleChoice("Is das gut?", modulVerwaltung.createModul("Mocking", "SE1"), new SchwierigkeitsgradTyp(1), musterloesung);
 	}
+
+    private void setUp() {
+        da = new DependencyAssembler();
+		da.buildDependencies();
+		fragenVerwaltung = da.getFragenVerwaltung();
+		modulVerwaltung = da.getModulVerwaltung();
+    }
 
 }

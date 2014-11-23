@@ -18,4 +18,10 @@ public class Benutzerverwaltung implements IBenutzerverwaltung {
 		this.fragenVerwaltung = fragenVerwaltung;
 		this.belohnungsSystem = belohnungsSystem;
 	}
+
+    @Override
+    public IBenutzer getCurrentUser() {
+        // TODO implement
+        return new Benutzer();
+    }
 }

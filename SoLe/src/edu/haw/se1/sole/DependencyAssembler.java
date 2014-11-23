@@ -29,7 +29,7 @@ public class DependencyAssembler {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void buildTestDependencies() {
+	public void buildDependencies() {
 		this.persistenceService = new PersistenceServiceStub();
 		this.modulVerwaltung = new Modulverwaltung(persistenceService);
 		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);

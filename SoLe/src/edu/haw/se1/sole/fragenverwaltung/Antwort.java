@@ -10,15 +10,25 @@ public class Antwort {
 	
 	private String antwort;
 	private boolean korrekt;
+    private int antwort_id;
+    private int frage_id;
 	
-	public Antwort(String antwort, boolean korrekt) {
-		this.antwort = antwort;
+	public Antwort(int antwort_id, int frage_id, String antwort, boolean korrekt) {
+		this.antwort_id = antwort_id;
+        this.frage_id = frage_id;
+        this.antwort = antwort;
 		this.korrekt = korrekt;
 		if (!invariant())
 			throw new IllegalArgumentException();
 	}
 	
-	private boolean invariant() {
+	public Antwort(String antwort, boolean korrekt) {
+        	super();
+            this.antwort = antwort;
+            this.korrekt = korrekt;
+    }
+
+    private boolean invariant() {
 		if (antwort != null && !antwort.isEmpty())
 			return true;
 		
@@ -66,5 +76,21 @@ public class Antwort {
 			return false;
 		return true;
 	}
+
+    public int getAntwort_id() {
+        return antwort_id;
+    }
+
+    public void setAntwort_id(int antwort_id) {
+        this.antwort_id = antwort_id;
+    }
+
+    public int getFrage_id() {
+        return frage_id;
+    }
+
+    public void setFrage_id(int frage_id) {
+        this.frage_id = frage_id;
+    }
 	
 }

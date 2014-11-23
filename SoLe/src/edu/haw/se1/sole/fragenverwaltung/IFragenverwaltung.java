@@ -93,12 +93,6 @@ public interface IFragenverwaltung {
 	public Antwort antwort(String antwort, boolean korrekt);
 	
 	/**
-	 * @param frage
-	 * @return 
-	 */
-	public boolean validateFrage(IFrage frage);
-
-	/**
 	 * @param frage Frage, die in der DB gespeichert werden soll
 	 * @return true, wenn Speicherung erfolgreich
 	 */

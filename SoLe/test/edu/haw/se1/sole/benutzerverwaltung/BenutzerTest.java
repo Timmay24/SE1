@@ -22,8 +22,12 @@ public class BenutzerTest {
 	}
 
 	@Test
-	public void testEquals() {
+	public void testDummyUserAreEqualToEachOther() {
 		assertEquals(userA, userB);
+	}
+	
+	@Test
+	public void testUserWithDifferentBenutzerkennungAreNotEqual() throws Exception {
 		assertNotEquals(userA, tim);
 	}
 	

@@ -16,7 +16,7 @@ public interface IFrage {
 	 * @return true, falls die Werte, mit denen die Frage erzeugt wurde,
 	 * korrekt sind.
 	 */
-	public boolean validateFrage();
+	public boolean validate();
 	
 	/**
 	 * Vergleicht eine abgegebene Lösung mit der hinterlegten

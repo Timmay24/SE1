@@ -5,23 +5,31 @@ public class Modul implements IModul {
 	private String 	bezeichnung;
 	private String 	studiengang;
 	private String 	schule;
+    private int modul_id;
 	
 	/**
 	 * BASE CONSTRUCTOR
+	 * @param modul_id 
 	 * 
 	 * @param bezeichnung
 	 * @param semester
 	 * @param studiengang
 	 * @param schule
 	 */
-	public Modul(String bezeichnung, String studiengang, String schule) {
-		this.bezeichnung = bezeichnung;
+	public Modul(int modul_id, String bezeichnung, String studiengang) {
+		this.modul_id = modul_id;
+        this.bezeichnung = bezeichnung;
 		this.studiengang = studiengang;
-		this.schule = schule;
 	}
 	
 	
-	/** OPERATIONS */
+	public Modul(String bezeichnung, String studiengang) {
+        this.bezeichnung = bezeichnung;
+        this.studiengang = studiengang;
+    }
+
+
+    /** OPERATIONS */
 	
 	public boolean validateModul() {
 		return invariant();
@@ -117,4 +125,17 @@ public class Modul implements IModul {
 			return false;
 		return true;
 	}
+
+
+
+    public void setModulId(int modul_id) {
+        this.modul_id = modul_id;
+    }
+
+
+    @Override
+    public int getModulId() {
+        // TODO Auto-generated method stub
+        return modul_id;
+    }
 }

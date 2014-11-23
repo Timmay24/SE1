@@ -22,8 +22,8 @@ import edu.haw.se1.sole.modulverwaltung.Modulverwaltung;
 
 public class Fragenverwaltung implements IFragenverwaltung {
 
-	private IModulverwaltung modulVerwaltung;
-	private IPersistenceService persistenceService;
+	protected IModulverwaltung modulVerwaltung;
+	protected IPersistenceService persistenceService;
 
 	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung)
 	{
@@ -54,7 +54,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	{
 		return new FrageFreitext(
 				"freitext",
-				modulVerwaltung.mockModul(),
+				modul,
 				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))),
 				new SchwierigkeitsgradTyp(5));
 	}
@@ -92,37 +92,12 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public boolean saveFrage(IFrage frage)
 	{
-		// MOCK
+		// TODO: implement
 		return true;
-	}
-	
-	@Override
-	public boolean validateFrage(IFrage frage)
-	{
-		return frage.validateFrage();
 	}
 
 	@Override
 	public Antwort antwort(String antwort, boolean korrekt) {
 		return new Antwort(antwort, korrekt);
 	}
-	
-	
-	/** MOCK SECTION */
-	
-	private MusterloesungMultipleChoice mockMusterLoesungMC()
-	{
-		return new MusterloesungMultipleChoice(Arrays.asList(
-				antwort("das hier nicht", false),
-				antwort("das hier", true),
-				antwort("aber das hier nicht", false),
-				antwort("das hier is wieder richtig", true),
-				antwort("das hier wieder nicht", false))); // MOCK
-	}
-	
-	public IFrage mockFrageMultipleChoice()
-	{
-		return new FrageMultipleChoice("Was ist richtig?", modulVerwaltung.mockModul(), new SchwierigkeitsgradTyp(5), mockMusterLoesungMC());
-	}
-
 }

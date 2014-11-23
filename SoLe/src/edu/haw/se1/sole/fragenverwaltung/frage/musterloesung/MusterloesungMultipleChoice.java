@@ -5,9 +5,10 @@ import java.util.List;
 import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
+import edu.haw.se1.sole.fragenverwaltung.IMusterloesung;
 import edu.haw.se1.sole.fragenverwaltung.frage.loesung.FragenloesungMultipleChoice;
 
-public class MusterloesungMultipleChoice extends MusterloesungBase {
+public class MusterloesungMultipleChoice extends MusterloesungBase implements IMusterloesung {
 
 	public MusterloesungMultipleChoice(List<Antwort> loesung) {
 		super(loesung);

@@ -21,16 +21,8 @@ public class Modulverwaltung implements IModulverwaltung {
 	 * @see edu.haw.se1.sole.modulverwaltung.IModulverwaltung#createModul(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public IModul createModul(String bezeichnung, String studiengang, String schule) {
-		return new Modul(bezeichnung, studiengang, schule);
-	}
-	
-	/* (non-Javadoc)
-	 * @see edu.haw.se1.sole.modulverwaltung.IModulverwaltung#mockModul()
-	 */
-	@Override
-	public IModul mockModul() {
-		return createModul("Mocking", "SE1", "HAW");
+	public IModul createModul(String bezeichnung, String studiengang) {
+		return new Modul(bezeichnung, studiengang);
 	}
 	
 	/* (non-Javadoc)

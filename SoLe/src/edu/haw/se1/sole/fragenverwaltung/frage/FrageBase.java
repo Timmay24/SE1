@@ -19,18 +19,19 @@ public abstract class FrageBase implements IFrage {
 	 * @param modul
 	 * @param schwierigkeit
 	 */
-	protected FrageBase(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit) {
+	protected FrageBase(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
 		this.setFragestellung(fragestellung);
-		this.modul = modul;
+		this.setModul(modul);
 		this.setSchwierigkeitsgrad(schwierigkeit);
-		this.setMusterLoesung(musterLoesung); //TODO: Woher kommt die musterLoesung bzw. die initiale Belegung??
+		this.setMusterLoesung(musterLoesung);
 	}
 	
 	/* (non-Javadoc)
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFrage#validateFrage()
 	 */
-	public boolean validateFrage()
+	public boolean validate()
 	{
+	    // because indirection? xD
 		return invariant();
 	}
 	
@@ -66,7 +67,7 @@ public abstract class FrageBase implements IFrage {
 		return modul;
 	}
 
-	public void setModul(Modul modul) {
+	public void setModul(IModul modul) {
 		this.modul = modul;
 	}
 
