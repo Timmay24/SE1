@@ -1,6 +1,6 @@
 package edu.haw.se1.sole.benutzerverwaltung;
 
-public class Benutzer {
+public class Benutzer implements IBenutzer {
 
 	private String 			benutzerkennung;
 	private String 			passwort;
@@ -49,16 +49,18 @@ public class Benutzer {
 		this.setNutzerrolle(nutzerrolle);
 	}
 
-	/**
-	 * @return the benutzerkennung
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getBenutzerkennung()
 	 */
+	@Override
 	public String getBenutzerkennung() {
 		return benutzerkennung;
 	}
 
-	/**
-	 * @return the passwort
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getPasswort()
 	 */
+	@Override
 	public String getPasswort() {
 		return passwort;
 	}
@@ -70,9 +72,10 @@ public class Benutzer {
 		this.passwort = passwort;
 	}
 
-	/**
-	 * @return the email
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getEmail()
 	 */
+	@Override
 	public EMailTyp getEmail() {
 		return email;
 	}
@@ -88,9 +91,10 @@ public class Benutzer {
 		this.email = new EMailTyp(email);
 	}
 
-	/**
-	 * @return the name
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -102,9 +106,10 @@ public class Benutzer {
 		this.name = name;
 	}
 
-	/**
-	 * @return the vorname
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getVorname()
 	 */
+	@Override
 	public String getVorname() {
 		return vorname;
 	}
@@ -116,9 +121,10 @@ public class Benutzer {
 		this.vorname = vorname;
 	}
 
-	/**
-	 * @return the geburtsdatum
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getGeburtsdatum()
 	 */
+	@Override
 	public String getGeburtsdatum() {
 		return geburtsdatum;
 	}
@@ -150,9 +156,10 @@ public class Benutzer {
 //		this.geburtsdatum = geburtsdatum;
 //	}
 
-	/**
-	 * @return the nutzerrolle
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.benutzerverwaltung.IBenutzer#getNutzerrolle()
 	 */
+	@Override
 	public NutzerrollenTyp getNutzerrolle() {
 		return nutzerrolle;
 	}

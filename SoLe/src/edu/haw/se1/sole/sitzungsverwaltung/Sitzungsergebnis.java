@@ -16,7 +16,7 @@ public class Sitzungsergebnis {
 	}
 	
 	public void rateAndSaveLoesung(IFragenloesung fragenLoesung) {
-		fragenLoesung.rateLoesung();
+		fragenLoesung.bewerteLoesung();
 		this.getLoesungen().add(fragenLoesung);
 	}
 	
@@ -24,7 +24,7 @@ public class Sitzungsergebnis {
 		double rating = 0.0;
 		double pointsOverall = 0.0;
 		for (IFragenloesung loesung : getLoesungen()) {
-			rating += loesung.getRating().getPercent() * loesung.getSchwierigkeitsgrad().getSchwierigkeit();
+			rating += loesung.getBewertung().getPercent() * loesung.getSchwierigkeitsgrad().getSchwierigkeit();
 			pointsOverall += loesung.getSchwierigkeitsgrad().getSchwierigkeit(); 
 		}
 		rating /= pointsOverall;

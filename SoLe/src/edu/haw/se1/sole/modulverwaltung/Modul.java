@@ -1,6 +1,6 @@
 package edu.haw.se1.sole.modulverwaltung;
 
-public class Modul {
+public class Modul implements IModul {
 
 	private String 	bezeichnung;
 	private String 	studiengang;
@@ -20,44 +20,60 @@ public class Modul {
 		this.schule = schule;
 	}
 	
-	/**
-	 * @return the bezeichnung
+	
+	/** OPERATIONS */
+	
+	public boolean validateModul() {
+		return false;
+	}
+	
+	
+	/** GETTER */
+	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.modulverwaltung.IModul#getBezeichnung()
 	 */
+	@Override
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
-	/**
-	 * @param bezeichnung the bezeichnung to set
+	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.modulverwaltung.IModul#getStudiengang()
 	 */
+	@Override
+	public String getStudiengang() {
+		return studiengang;
+	}
+	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.modulverwaltung.IModul#getSchule()
+	 */
+	@Override
+	public String getSchule() {
+		return schule;
+	}
+	
+	
+	/** SETTER */
+	
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
 
-	/**
-	 * @return the studiengang
-	 */
-	public String getStudiengang() {
-		return studiengang;
-	}
-	/**
-	 * @param studiengang the studiengang to set
-	 */
+	
 	public void setStudiengang(String studiengang) {
 		this.studiengang = studiengang;
 	}
-	/**
-	 * @return the schule
-	 */
-	public String getSchule() {
-		return schule;
-	}
-	/**
-	 * @param schule the schule to set
-	 */
+	
 	public void setSchule(String schule) {
 		this.schule = schule;
 	}
 
+	
+
+	/** COMPARISON */
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -89,6 +105,4 @@ public class Modul {
 			return false;
 		return true;
 	}
-
-	
 }

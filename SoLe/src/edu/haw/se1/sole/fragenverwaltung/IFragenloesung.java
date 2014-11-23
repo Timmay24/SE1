@@ -7,9 +7,9 @@ import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 
 public interface IFragenloesung {
 
-	public void rateLoesung();
+	public void bewerteLoesung();
 	
-	public ProzentTyp getRating();
+	public ProzentTyp getBewertung();
 	
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad();
 	

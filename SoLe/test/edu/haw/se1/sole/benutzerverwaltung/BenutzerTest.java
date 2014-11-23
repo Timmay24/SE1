@@ -10,9 +10,9 @@ import edu.haw.se1.sole.benutzerverwaltung.NutzerrollenTyp;
 
 public class BenutzerTest {
 	
-	Benutzer userA;
-	Benutzer userB;
-	Benutzer tim;
+	IBenutzer userA;
+	IBenutzer userB;
+	IBenutzer tim;
 	
 	@Before
 	public void setUp() throws Exception {

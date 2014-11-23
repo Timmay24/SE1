@@ -1,21 +1,13 @@
 package edu.haw.se1.sole.fragenverwaltung.frage;
 
-import edu.haw.se1.sole.common.ProzentTyp;
-import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
-import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingleChoice;
-import edu.haw.se1.sole.modulverwaltung.Modul;
+import edu.haw.se1.sole.fragenverwaltung.IMusterloesung;
+import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public class FrageSingleChoice extends FrageBase {
 
-	public FrageSingleChoice(String fragestellung, Modul modul, SchwierigkeitsgradTyp schwierigkeit, MusterloesungSingleChoice musterLoesung) {
+	public FrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
 		super(fragestellung, modul, schwierigkeit);
 		this.musterLoesung = musterLoesung;
-	}
-
-	@Override
-	public ProzentTyp rateLoesung(IFragenloesung fragenLoesung) {
-		// TODO Auto-generated method stub
-		return this.musterLoesung.rateLoesung(fragenLoesung);
 	}
 
 }

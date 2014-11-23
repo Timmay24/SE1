@@ -1,29 +1,53 @@
 package edu.haw.se1.sole.belohnungssystem;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import edu.haw.se1.sole.benutzerverwaltung.IBenutzer;
 import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.gruppenverwaltung.ILerngruppe;
 
 public class Belohnungssystem implements IBelohnungssystem {
 	
-	private Map<String, Badge> badges;
 	private IPersistenceService persistenceService;
 
 	public Belohnungssystem(IPersistenceService persistenceService) {
 		this.persistenceService = persistenceService;
-		this.badges = new HashMap<>();
 	}
-	
-	public Badge createBadge(String name) {
-		if (name == null) return null;
+
+	@Override
+	public IBadge createBadge() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<IBadge> getBadges() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IBadge getBadgeBy(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean saveBadge(IBadge badge) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void updateBadgesFor(IBenutzer benutzer) {
+		// TODO Auto-generated method stub
 		
-		Badge newBadge = new Badge(name, "beschreibungstext", "bildPfad");
-		badges.put(name, newBadge);
-		return newBadge;
+	}
+
+	@Override
+	public void updateBadgesFor(ILerngruppe lerngruppe) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public Badge getBadge(String name) {
-		return badges.get(name); 
-	}
 }

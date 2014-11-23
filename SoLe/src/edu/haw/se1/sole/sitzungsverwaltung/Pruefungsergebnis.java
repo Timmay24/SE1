@@ -12,7 +12,7 @@ public class Pruefungsergebnis extends Sitzungsergebnis {
 	}
 	
 	public void rateAndSaveLoesung(IFragenloesung fragenLoesung) {
-		fragenLoesung.rateLoesung();
+		fragenLoesung.bewerteLoesung();
 		this.getLoesungen().add(fragenLoesung);
 	}
 

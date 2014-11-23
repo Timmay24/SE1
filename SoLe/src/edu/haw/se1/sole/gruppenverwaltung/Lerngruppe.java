@@ -4,16 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 import edu.haw.se1.sole.belohnungssystem.Badge;
+import edu.haw.se1.sole.belohnungssystem.IBadge;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzer;
-import edu.haw.se1.sole.modulverwaltung.Modul;
+import edu.haw.se1.sole.benutzerverwaltung.IBenutzer;
+import edu.haw.se1.sole.modulverwaltung.IModul;
 
-public class Lerngruppe {
+public class Lerngruppe implements ILerngruppe {
 	
 	// simulating storage for relating data
 	private String name;
-	private Set<Benutzer> mitglieder;
-	private Set<Badge> badges;
-	private Modul modul;
+	private Set<IBenutzer> mitglieder;
+	private Set<IBadge> badges;
+	private IModul modul;
 	private String zutrittscode;
 
 	/**
@@ -21,12 +23,12 @@ public class Lerngruppe {
 	 * 
 	 * @param modul
 	 */
-	public Lerngruppe(String name, Modul modul, String zutrittscode) {
+	public Lerngruppe(String name, IModul modul, String zutrittscode) {
 		setName(name);
 		setModul(modul);
 		setZutrittscode(zutrittscode);
-		setMitglieder(new HashSet<Benutzer>());
-		setBadges(new HashSet<Badge>());
+		setMitglieder(new HashSet<IBenutzer>());
+		setBadges(new HashSet<IBadge>());
 	}
 	
 	/**
@@ -34,37 +36,39 @@ public class Lerngruppe {
 	 * 
 	 * @param modul
 	 */
-	public Lerngruppe(String name, Modul modul) {
+	public Lerngruppe(String name, IModul modul) {
 		this(name, modul, "");
 	}
 	
-	/**
-	 * @return true if group is empty, false if not.
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#isEmpty()
 	 */
+	@Override
 	public boolean isEmpty() {
 		return mitglieder.isEmpty();
 	}
 	
-	/**
-	 * @param modul sets new module to group
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#changeModule(edu.haw.se1.sole.modulverwaltung.Modul)
 	 */
-	public void changeModule(Modul modul) {
+	@Override
+	public void changeModule(IModul modul) {
 		this.setModul(modul);
 	}
 	
-	/**
-	 * @param benutzer
-	 * @return true if benutzer was added
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#addMiglied(edu.haw.se1.sole.benutzerverwaltung.Benutzer)
 	 */
-	public boolean addMiglied(Benutzer benutzer) {
+	@Override
+	public boolean addMitglied(IBenutzer benutzer) {
 		return getMitglieder().add(benutzer);
 	}
 	
-	/**
-	 * @param benutzer
-	 * @return true, if benutzer is member of the group
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#containsMember(edu.haw.se1.sole.benutzerverwaltung.IBenutzer)
 	 */
-	public boolean containsMember(Benutzer benutzer) {
+	@Override
+	public boolean containsBenutzer(IBenutzer benutzer) {
 		if (benutzer != null) {
 			return getMitglieder().contains(benutzer);
 		} else {
@@ -73,37 +77,41 @@ public class Lerngruppe {
 	}
 	
 	// ACCESSORS //
-	/**
-	 * @return the mitglieder
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#getMitglieder()
 	 */
-	public Set<Benutzer> getMitglieder() {
+	@Override
+	public Set<IBenutzer> getMitglieder() {
 		return mitglieder;
 	}
 	
-	/**
-	 * @return the badges
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#getBadges()
 	 */
-	public Set<Badge> getBadges() {
+	@Override
+	public Set<IBadge> getBadges() {
 		return badges;
 	}
 
-	/**
-	 * @return the modul
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#getModul()
 	 */
-	public Modul getModul() {
+	@Override
+	public IModul getModul() {
 		return modul;
 	}
 
 	/**
 	 * @param modul the modul to set
 	 */
-	private void setModul(Modul modul) {
+	private void setModul(IModul modul) {
 		this.modul = modul;
 	}
 	
-	/**
-	 * @return the zutrittscode
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#getZutrittscode()
 	 */
+	@Override
 	public String getZutrittscode() {
 		return zutrittscode;
 	}
@@ -115,9 +123,10 @@ public class Lerngruppe {
 		this.zutrittscode = zutrittscode;
 	}
 	
-	/**
-	 * @return the name
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -132,35 +141,36 @@ public class Lerngruppe {
 	/**
 	 * @param mitglieder the mitglieder to set
 	 */
-	private void setMitglieder(Set<Benutzer> mitglieder) {
+	private void setMitglieder(Set<IBenutzer> mitglieder) {
 		this.mitglieder = mitglieder;
 	}
 
 	/**
 	 * @param badges the badges to set
 	 */
-	private void setBadges(Set<Badge> badges) {
+	private void setBadges(Set<IBadge> badges) {
 		this.badges = badges;
 	}
 
-	/**
-	 * @return true, if passcode is required to join group
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#requiresPasscode()
 	 */
-	public boolean requiresPasscode() {
+	@Override
+	public boolean requiresZutrittscode() {
 		return !getZutrittscode().isEmpty();
 	}
 
-	/**
-	 * @param other
-	 * @return
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#membersMatch(edu.haw.se1.sole.gruppenverwaltung.ILerngruppe)
 	 */
-	public boolean membersMatch(Lerngruppe other) {
-		if (this.getMitglieder().size() == other.getMitglieder().size() &&
-				this.getMitglieder().containsAll(other.getMitglieder())) {
-			return true;
-		} else {
-			return false;
+	@Override
+	public boolean membersMatch(ILerngruppe other) {
+		if (other != null) {
+			if (this.getAnzahlMitglieder() == other.getAnzahlMitglieder()) {
+				return this.getMitglieder().containsAll(other.getMitglieder());
+			}
 		}
+		return false;
 	}
 
 	/* (non-Javadoc)
@@ -183,17 +193,19 @@ public class Lerngruppe {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Lerngruppe))
+		if (!(obj instanceof ILerngruppe))
 			return false;
-		Lerngruppe other = (Lerngruppe) obj;
+		ILerngruppe other = (ILerngruppe) obj;
 		if (name == null) {
-			if (other.name != null)
+			if (other.getName() != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!name.equals(other.getName()))
 			return false;
 		return true;
 	}
-	
-	
 
+	@Override
+	public boolean removeMitglied(IBenutzer benutzer) {
+		return getMitglieder().remove(benutzer);
+	}
 }

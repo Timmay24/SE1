@@ -1,6 +1,6 @@
 package edu.haw.se1.sole.belohnungssystem;
 
-public class Badge {
+public class Badge implements IBadge {
 	
 	private String name;
 	private String beschreibung;
@@ -17,23 +17,26 @@ public class Badge {
 		this.bildPfad = bildPfad;
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.belohnungssystem.IBadge#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
 	
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.belohnungssystem.IBadge#getBeschreibung()
 	 */
+	@Override
 	public String getBeschreibung() {
 		return beschreibung;
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.belohnungssystem.IBadge#getBildPfad()
 	 */
+	@Override
 	public String getBildPfad() {
 		return bildPfad;
 	}

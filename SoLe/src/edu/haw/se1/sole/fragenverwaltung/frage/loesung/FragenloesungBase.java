@@ -1,8 +1,10 @@
 package edu.haw.se1.sole.fragenverwaltung.frage.loesung;
 
 import java.util.Date;
+import java.util.List;
 
 import edu.haw.se1.sole.common.ProzentTyp;
+import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
@@ -10,29 +12,30 @@ import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 
 public abstract class FragenloesungBase implements IFragenloesung {
 	
-	protected ProzentTyp rating;
+	protected List<Antwort> loesung;
 	protected IFrage frage;
+	protected ProzentTyp bewertung;
 	protected Date bearbeitungsDatum;
 
-	protected FragenloesungBase() {
+	// muss ggf. noch so erweitert werden, dass direkt bei Erstellung
+	// alle Werte gesetzt sind und die Lösung immutable
+	protected FragenloesungBase(List<Antwort> loesung, IFrage frage) {
+		this.loesung = loesung;
+		this.frage = frage;
 	}
 
-	public ProzentTyp getRating() {
-		return rating;
+	public ProzentTyp getBewertung() {
+		return bewertung;
 	}
 
-	public void rateLoesung() {
-		this.rating = frage.rateLoesung(this);
+	public void bewerteLoesung() {
+		this.bewertung = frage.bewerteLoesung(this);
 	}
 
 	public IFrage getFrage() {
 		return frage;
 	}
 
-	protected void setFrage(IFrage frage) {
-		this.frage = frage;
-	}
-	
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad() {
 		return frage.getSchwierigkeitsgrad();
 	}

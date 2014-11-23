@@ -1,42 +1,129 @@
 package edu.haw.se1.sole.fragenverwaltung;
 
+import java.util.Arrays;
+import java.util.List;
+
 import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
+import edu.haw.se1.sole.fragenverwaltung.frage.FrageFreitext;
+import edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageSingleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
+import edu.haw.se1.sole.fragenverwaltung.frage.loesung.FragenloesungFreitext;
+import edu.haw.se1.sole.fragenverwaltung.frage.loesung.FragenloesungMultipleChoice;
+import edu.haw.se1.sole.fragenverwaltung.frage.loesung.FragenloesungSingleChoice;
+import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungFreitext;
+import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultipleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingleChoice;
+import edu.haw.se1.sole.modulverwaltung.IModul;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 import edu.haw.se1.sole.modulverwaltung.Modul;
+import edu.haw.se1.sole.modulverwaltung.Modulverwaltung;
 
 public class Fragenverwaltung implements IFragenverwaltung {
 
 	private IModulverwaltung modulVerwaltung;
 	private IPersistenceService persistenceService;
 
-	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung) {
+	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung)
+	{
 		this.persistenceService = persistenceService;
 		this.modulVerwaltung = modulVerwaltung;
 	}
 	
-	public IFrage buildFrageSingleChoice(String fragestellung, Modul modul, SchwierigkeitsgradTyp schwierigkeit, MusterloesungSingleChoice musterLoesung) {
+	@Override
+	public IFragenloesung createFragenloesungFreitext(List<Antwort> loesung, IFrage frage)
+	{
+		return new FragenloesungFreitext(loesung, frage);
+	}
+
+	@Override
+	public IFragenloesung createFragenloesungSingleChoice(List<Antwort> loesung, IFrage frage)
+	{
+		return new FragenloesungSingleChoice(loesung, frage);
+	}
+
+	@Override
+	public IFragenloesung createFragenloesungMultipleChoice(List<Antwort> loesung, IFrage frage)
+	{
+		return new FragenloesungMultipleChoice(loesung, frage);
+	}
+	
+	@Override
+	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	{
+		return new FrageFreitext(
+				"freitext",
+				modulVerwaltung.mockModul(),
+				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))),
+				new SchwierigkeitsgradTyp(5));
+	}
+	
+	@Override
+	public IFrage createFrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	{
 		return new FrageSingleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
 	}
+	
+	@Override
+	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	{
+		return new FrageMultipleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
+	}
 
 	@Override
-	public IFrage createFrageMultipleChoice() {
-		// TODO Auto-generated method stub
+	public MusterloesungFreitext createMusterloesungFreitext()
+	{
 		return null;
 	}
 
 	@Override
-	public IMusterloesung createMusterloesungMultipleChoice() {
-		// TODO Auto-generated method stub
+	public MusterloesungSingleChoice createMusterloesungSingleChoice(List<Antwort> antworten)
+	{
 		return null;
 	}
 
 	@Override
-	public boolean saveFrage(IFrage frage) {
-		// TODO Auto-generated method stub
+	public MusterloesungMultipleChoice createMusterloesungMultipleChoice(List<Antwort> antworten)
+	{
+		return new MusterloesungMultipleChoice(antworten);
+	}
+	
+	@Override
+	public boolean saveFrage(IFrage frage)
+	{
 		return false;
+	}
+	
+	@Override
+	public boolean validateFrage(IFrage frage)
+	{
+		return frage.validateFrage();
+	}
+
+	@Override
+	public Antwort antwort(String antwort, boolean korrekt) {
+		return new Antwort(antwort, korrekt);
+	}
+	
+	
+	
+	
+	/** MOCK SECTION */
+	
+	private MusterloesungMultipleChoice mockMusterLoesungMC()
+	{
+		return new MusterloesungMultipleChoice(Arrays.asList(
+				antwort("das hier nicht", false),
+				antwort("das hier", true),
+				antwort("aber das hier nicht", false),
+				antwort("das hier is wieder richtig", true),
+				antwort("das hier wieder nicht", false))); // MOCK
+	}
+	
+	public IFrage mockFrageMultipleChoice()
+	{
+		return new FrageMultipleChoice("Was ist richtig?", modulVerwaltung.mockModul(), new SchwierigkeitsgradTyp(5), mockMusterLoesungMC());
 	}
 
 }

@@ -11,9 +11,9 @@ import edu.haw.se1.sole.modulverwaltung.Modul;
 
 public class LerngruppeTest {
 
-	Lerngruppe g1;
-	Lerngruppe g2;
-	Lerngruppe g3;
+	ILerngruppe g1;
+	ILerngruppe g2;
+	ILerngruppe g3;
 	
 	Benutzer u1;
 	Benutzer u2;
@@ -36,14 +36,14 @@ public class LerngruppeTest {
 	
 	@Test
 	public void testAddMember() {
-		assertTrue(g1.addMiglied(u1));
-		assertTrue(g1.addMiglied(u2));
+		assertTrue(g1.addMitglied(u1));
+		assertTrue(g1.addMitglied(u2));
 
-		assertTrue(g3.addMiglied(u1));
-		assertTrue(g3.addMiglied(u2));
+		assertTrue(g3.addMitglied(u1));
+		assertTrue(g3.addMitglied(u2));
 		
-		assertTrue(g1.containsMember(u1));
-		assertTrue(g1.containsMember(u2));
+		assertTrue(g1.containsBenutzer(u1));
+		assertTrue(g1.containsBenutzer(u2));
 		
 		assertNotEquals(g1, g3);
 	}
