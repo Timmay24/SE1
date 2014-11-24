@@ -27,6 +27,8 @@ public class Antwort {
             this.antwort = antwort;
             this.korrekt = korrekt;
     }
+	
+	//TODO: possible clash of invariant calls
 
     private boolean invariant() {
 		if (antwort != null && !antwort.isEmpty())

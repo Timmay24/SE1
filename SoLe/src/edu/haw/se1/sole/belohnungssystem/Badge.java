@@ -7,9 +7,13 @@ public class Badge implements IBadge {
 	private String bildPfad;
 
 	/**
-	 * @param name
-	 * @param beschreibung
-	 * @param bildPfad
+	 * Badge ist eine Klasse für Abzeichen, welche im Rahmen der Softwarenutzung
+	 * verdient werden können. Sie repräsentieren Erfolge oder Meilensteine
+	 * eines Nutzers oder einer Lerngruppe.
+	 * 
+	 * @param name Name der Badge
+	 * @param beschreibung Beschreibt die Badge näher bzw. wofür sie verdient werden kann
+	 * @param bildPfad Pfad zum Bild, das für eine Badge in der GUI angezeigt werden soll
 	 */
 	public Badge(String name, String beschreibung, String bildPfad) {
 		this.name = name;
@@ -20,11 +24,9 @@ public class Badge implements IBadge {
 			throw new IllegalStateException();
 	}
 	
-	@Override
-	public boolean validate() {
-		return invariant();
-	}
-
+	/**
+	 * @return true, wenn Invariante der Instanz nicht verletzt ist.
+	 */
 	private boolean invariant() {
 		if (this.beschreibung != null)
 		if (!this.beschreibung.isEmpty())
@@ -57,6 +59,14 @@ public class Badge implements IBadge {
 	@Override
 	public String getBildPfad() {
 		return bildPfad;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getName();			
 	}
 
 	/* (non-Javadoc)

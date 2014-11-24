@@ -29,16 +29,6 @@ public abstract class FrageBase implements IFrage {
 			throw new IllegalStateException();
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.haw.se1.sole.fragenverwaltung.IFrage#validateFrage()
-	 */
-	public boolean validate()
-	{
-	    // because indirection? xD
-        //TIM: because... what?
-		return invariant();
-	}
-	
 	/**
 	 * @return true, wenn Invariante der Instanz nicht verletzt wird
 	 */

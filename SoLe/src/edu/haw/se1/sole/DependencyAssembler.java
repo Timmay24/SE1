@@ -25,10 +25,16 @@ public class DependencyAssembler {
 	private IGruppenverwaltung gruppenVerwaltung;
 	private IPersistenceService persistenceService;
 
-	public DependencyAssembler() {
-		// TODO Auto-generated constructor stub
-	}
 	
+	/**
+	 * Der DependencyAssembler dient zur Erzeugung aller nötigen
+	 * Komponenteninstanzen und injiziert Referenzen.
+	 */
+	public DependencyAssembler() {}
+	
+	/**
+	 * Erzeugt Komponenteninstanzen und injiziert Referenzen
+	 */
 	public void buildDependencies() {
 		this.persistenceService = new PersistenceServiceStub();
 		this.modulVerwaltung = new Modulverwaltung(persistenceService);
@@ -39,26 +45,44 @@ public class DependencyAssembler {
 		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 
+	/**
+	 * @return Instanz der Modulverwaltung 
+	 */
 	public IModulverwaltung getModulVerwaltung() {
 		return modulVerwaltung;
 	}
 
+	/**
+	 * @return Instanz der Sitzungsverwaltung 
+	 */
 	public ISitzungsverwaltung getSitzungsVerwaltung() {
 		return sitzungsVerwaltung;
 	}
 
+	/**
+	 * @return Instanz der Fragenverwaltung 
+	 */
 	public IFragenverwaltung getFragenVerwaltung() {
 		return fragenVerwaltung;
 	}
 
+	/**
+	 * @return Instanz des Belohnungssystem
+	 */
 	public IBelohnungssystem getBelohnungsSystem() {
 		return belohnungsSystem;
 	}
 
+	/**
+	 * @return Instanz der Benutzerverwaltung 
+	 */
 	public IBenutzerverwaltung getBenutzerVerwaltung() {
 		return benutzerVerwaltung;
 	}
 
+	/**
+	 * @return Instanz der Gruppenverwaltung 
+	 */
 	public IGruppenverwaltung getGruppenVerwaltung() {
 		return gruppenVerwaltung;
 	}

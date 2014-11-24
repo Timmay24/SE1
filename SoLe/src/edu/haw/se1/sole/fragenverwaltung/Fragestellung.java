@@ -11,6 +11,11 @@ public class Fragestellung {
 	public String getFrageStellung() {
 		return frageStellung;
 	}
+	
+	@Override
+	public String toString() {
+		return getFrageStellung();
+	}
 
 	@Override
 	public int hashCode() {

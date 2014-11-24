@@ -48,15 +48,9 @@ public class Modulverwaltung implements IModulverwaltung {
 	}
 
 	@Override
-	public boolean validateModul(IModul modul)
-	{
-		return modul.validateModul();
-	}
-
-	@Override
 	public boolean saveModul(IModul modul)
 	{
-		// MOCK
+		//stub
 		return true;
 	}
 	

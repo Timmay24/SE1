@@ -20,20 +20,20 @@ public class Modul implements IModul {
 		this.modul_id = modul_id;
         this.bezeichnung = bezeichnung;
 		this.studiengang = studiengang;
+		
+		invariant();
 	}
 	
 	
 	public Modul(String bezeichnung, String studiengang) {
         this.bezeichnung = bezeichnung;
         this.studiengang = studiengang;
+        
+        invariant();
     }
 
 
     /** OPERATIONS */
-	
-	public boolean validateModul() {
-		return invariant();
-	}
 	
 	private boolean invariant() {
 		if (this.bezeichnung != null)

@@ -12,7 +12,7 @@ public interface IBelohnungssystem {
 	 * 
 	 * @return Erzeugte Badge.
 	 */
-	public IBadge createBadge();
+	public IBadge createBadge(); //TODO: params are missing
 	
 	/**
 	 * @return Alle verfügbaren Badges.
@@ -20,12 +20,16 @@ public interface IBelohnungssystem {
 	public List<IBadge> getBadges();
 	
 	/**
+	 * Erzeugt eine Instanz mit allen Daten der gesuchten Badge.
+	 * 
 	 * @param name Name der gesuchten Badge.
 	 * @return Badge mit dem Namen name
 	 */
 	public IBadge getBadgeBy(String name);
 	
 	/**
+	 * Sichert eine Badge in der DB.
+	 * 
 	 * @param badge Badge, die in der DB gesichert werden soll.
 	 * @return true, falls Sicherung erfolgreich.
 	 */
@@ -45,5 +49,4 @@ public interface IBelohnungssystem {
 	 */
 	public void updateBadgesFor(ILerngruppe lerngruppe);
 
-	boolean validateBadge(IBadge badge);
 }

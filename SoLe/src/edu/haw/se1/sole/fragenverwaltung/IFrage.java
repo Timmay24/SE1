@@ -11,14 +11,6 @@ public interface IFrage {
 	public String getFragestellung();
 	
 	/**
-	 * Prüft die Invariante der Instanz
-	 * 
-	 * @return true, falls die Werte, mit denen die Frage erzeugt wurde,
-	 * korrekt sind.
-	 */
-	public boolean validate();
-	
-	/**
 	 * Vergleicht eine abgegebene Lösung mit der hinterlegten
 	 * Musterlösung der Frage.
 	 * 

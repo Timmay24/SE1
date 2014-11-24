@@ -41,19 +41,19 @@ public class Benutzer implements IBenutzer {
 			throw new IllegalStateException();
 	}
 	
-	// Shortcut to creating a sample user named 'admin'
+	/**
+	 * Shortcut to creating a sample user named 'admin'
+	 */
 	public Benutzer() {
 		setBenutzerkennung("admin");
 		setPasswort("password");
 		setEmail("admin@sole.edu");
 		setName("Darfes");
 		setVorname("Admin");
-		setGeburtsdatum("13.03.2007");
+		setGeburtsdatum("13.03.2000");
 		setNutzerrolle(nutzerrolle);
-	}
-	
-	public boolean validate() {
-		return invariant();
+		
+		invariant();
 	}
 	
 	private boolean invariant() {

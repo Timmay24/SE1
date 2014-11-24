@@ -17,11 +17,6 @@ public interface IModul {
 	 */
 	public abstract String getSchule();
 	
-	/**
-	 * @return true, wenn Invariante nicht verletzt ist
-	 */
-	public abstract boolean validateModul();
-	
 	public abstract int getModulId();
 
 }
