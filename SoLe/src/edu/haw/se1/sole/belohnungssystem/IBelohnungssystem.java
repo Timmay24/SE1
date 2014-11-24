@@ -28,12 +28,6 @@ public interface IBelohnungssystem {
 	public IBadge getBadgeBy(String name);
 	
 	/**
-	 * Sichert eine Badge in der DB.
-	 * 
-	 * @param badge Badge, die in der DB gesichert werden soll.
-	 * @return true, falls Sicherung erfolgreich.
-	 */
-	/**
 	 * Veranlasst die Speicherung der Daten eines Badgeobjekts in der Persistenz.
 	 * 
 	 * @param badge Badge, die gespeichert werden soll
