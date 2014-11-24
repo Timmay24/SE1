@@ -9,9 +9,14 @@ import edu.haw.util.fluid.FluidHelper;
 public class JDBCDaoBase {
 
 	private JdbcTemplate jdbcTemplate;
+	
+	public JDBCDaoBase(DataSource dataSource) {
+        super();
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
 	public void setDataSource(DataSource dataSource) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
+	    jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 	protected JdbcTemplate getJdbcTemplate() {

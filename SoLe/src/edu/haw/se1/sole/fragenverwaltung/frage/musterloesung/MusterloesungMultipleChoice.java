@@ -10,8 +10,8 @@ import edu.haw.se1.sole.fragenverwaltung.frage.loesung.FragenloesungMultipleChoi
 
 public class MusterloesungMultipleChoice extends MusterloesungBase implements IMusterloesung {
 
-	public MusterloesungMultipleChoice(List<Antwort> loesung) {
-		super(loesung);
+	public MusterloesungMultipleChoice(List<Antwort> antworten) {
+		super(antworten);
 	}
 
 	/**
@@ -61,6 +61,10 @@ public class MusterloesungMultipleChoice extends MusterloesungBase implements IM
 			}
 		}
 		return new ProzentTyp(0);
+	}
+	
+	public List<Antwort> getAntworten() {
+	    return loesung;
 	}
 
 }

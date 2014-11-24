@@ -23,5 +23,7 @@ public interface IFrage {
 	 * @return Schwierigkeitsgrad
 	 */
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad();
+	
+	public int getFrageId();
 
 }

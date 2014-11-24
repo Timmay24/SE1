@@ -5,8 +5,8 @@ import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public class FrageSingleChoice extends FrageBase {
 
-	public FrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
-		super(fragestellung, modul, schwierigkeit, musterLoesung);
+	public FrageSingleChoice(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
+		super(frage_id, fragestellung, modul, schwierigkeit, musterLoesung);
 		this.musterLoesung = musterLoesung;
 	}
 

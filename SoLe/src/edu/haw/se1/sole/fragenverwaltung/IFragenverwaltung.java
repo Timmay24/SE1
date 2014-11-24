@@ -94,6 +94,6 @@ public interface IFragenverwaltung {
 	 * @param frage Frage, die in der DB gespeichert werden soll
 	 * @return true, wenn Speicherung erfolgreich
 	 */
-	public boolean saveFrage(IFrage frage);
+	public IFrage saveFrage(IFrage frage);
 
 }
