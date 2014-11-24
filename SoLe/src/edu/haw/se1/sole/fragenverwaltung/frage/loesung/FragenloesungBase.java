@@ -19,27 +19,49 @@ public abstract class FragenloesungBase implements IFragenloesung {
 
 	// muss ggf. noch so erweitert werden, dass direkt bei Erstellung
 	// alle Werte gesetzt sind und die Lösung immutable
+	
+	/**
+	 * Konstruktor
+	 * 
+	 * @param loesung
+	 * @param frage
+	 */
 	protected FragenloesungBase(List<Antwort> loesung, IFrage frage) {
 		this.loesung = loesung;
 		this.frage = frage;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenloesung#getBewertung()
+	 */
 	public ProzentTyp getBewertung() {
 		return bewertung;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenloesung#bewerteLoesung()
+	 */
 	public void bewerteLoesung() {
 		this.bewertung = frage.bewerteLoesung(this);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenloesung#getFrage()
+	 */
 	public IFrage getFrage() {
 		return frage;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenloesung#getSchwierigkeitsgrad()
+	 */
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad() {
 		return frage.getSchwierigkeitsgrad();
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenloesung#getBearbeitungsDatum()
+	 */
 	public Date getBearbeitungsDatum() {
 		return bearbeitungsDatum;
 	}

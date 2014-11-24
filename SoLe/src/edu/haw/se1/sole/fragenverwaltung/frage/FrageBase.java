@@ -4,8 +4,8 @@ import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenloesung;
 import edu.haw.se1.sole.fragenverwaltung.IMusterloesung;
+import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.modulverwaltung.IModul;
-import edu.haw.se1.sole.modulverwaltung.Modul;
 
 public abstract class FrageBase implements IFrage {
 
@@ -19,6 +19,7 @@ public abstract class FrageBase implements IFrage {
 	 * @param fragestellung
 	 * @param modul
 	 * @param schwierigkeit
+	 * @throws InvalidFrageException 
 	 */
 	protected FrageBase(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
 		this.frage_id = frage_id;
@@ -27,26 +28,32 @@ public abstract class FrageBase implements IFrage {
 		this.setSchwierigkeitsgrad(schwierigkeit);
 		this.setMusterLoesung(musterLoesung);
 		
-		if (!invariant())
-			throw new IllegalStateException();
+		invariant();
 	}
 	
 	/**
 	 * @return true, wenn Invariante der Instanz nicht verletzt wird
+	 * @throws InvalidFrageException 
 	 */
-	private boolean invariant()
+	private void invariant() throws InvalidFrageException
 	{
-		if (this.getFragestellung() != null)
-		if (!this.getFragestellung().isEmpty())
-		if (this.getMusterLoesung() != null)
-		if (this.getSchwierigkeitsgrad() != null)
-			return true;
+		InvalidFrageException e = new InvalidFrageException(this);
 		
-		return false;
+		if (getFragestellung() == null || getFragestellung().isEmpty())
+			e.addInvalidField("fragestellung");
+		if (getModul() == null)
+			e.addInvalidField("modul");
+		if (getSchwierigkeitsgrad() == null)
+			e.addInvalidField("schwierigkeit");
+		if (getMusterLoesung() == null)
+			e.addInvalidField("musterloesung");
+		
+		if (e.hasInvalidFields())
+			throw e;
 	}
 
-	/**
-	 * @return Liefert die hinterlegte Musterloesung
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFrage#getMusterLoesung()
 	 */
 	public IMusterloesung getMusterLoesung() {
 		return musterLoesung;
@@ -56,14 +63,14 @@ public abstract class FrageBase implements IFrage {
 		this.musterLoesung = musterLoesung;
 	}
 
-	/**
-	 * @return Liefert das zugeordnete Modul
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFrage#getModul()
 	 */
 	public IModul getModul() {
 		return modul;
 	}
 
-	public void setModul(IModul modul) {
+	private void setModul(IModul modul) {
 		this.modul = modul;
 	}
 

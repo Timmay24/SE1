@@ -1,6 +1,7 @@
 package edu.haw.se1.sole.fragenverwaltung.frage;
 
 import edu.haw.se1.sole.fragenverwaltung.IMusterloesung;
+import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public class FrageFreitext extends FrageBase {

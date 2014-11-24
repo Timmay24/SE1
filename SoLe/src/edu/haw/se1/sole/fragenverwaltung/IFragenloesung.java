@@ -14,4 +14,6 @@ public interface IFragenloesung {
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad();
 	
 	public Date getBearbeitungsDatum();
+	
+	public IFrage getFrage();
 }
