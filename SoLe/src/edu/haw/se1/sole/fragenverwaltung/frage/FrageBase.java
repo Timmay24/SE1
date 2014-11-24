@@ -19,7 +19,7 @@ public abstract class FrageBase implements IFrage {
 	 * @param fragestellung
 	 * @param modul
 	 * @param schwierigkeit
-	 * @throws InvalidFrageException 
+	 * @throws InvalidFrageException
 	 */
 	protected FrageBase(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException {
 		this.frage_id = frage_id;

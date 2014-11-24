@@ -33,7 +33,13 @@ public interface IBelohnungssystem {
 	 * @param badge Badge, die in der DB gesichert werden soll.
 	 * @return true, falls Sicherung erfolgreich.
 	 */
-	public boolean saveBadge(IBadge badge);
+	/**
+	 * Veranlasst die Speicherung der Daten eines Badgeobjekts in der Persistenz.
+	 * 
+	 * @param badge Badge, die gespeichert werden soll
+	 * @return Eine neue, zu badge gleichwertige, Instanz mit korrekter ID aus der Persistenz
+	 */
+	public IBadge saveBadge(IBadge badge);
 	
 	/**
 	 * Routine zur Prüfung, ob der Benutzer eine neue Badge verdient hat.

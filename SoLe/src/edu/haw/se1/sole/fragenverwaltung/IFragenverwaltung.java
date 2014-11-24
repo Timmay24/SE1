@@ -113,10 +113,11 @@ public interface IFragenverwaltung {
 	public Antwort antwort(String antwort, boolean korrekt);
 	
 	/**
-	 * @param frage Frage, die in der DB gespeichert werden soll
-	 * @return true, wenn Speicherung erfolgreich
+	 * Veranlasst die Speicherung der Daten eines Frageobjekts in der Persistenz.
+	 * 
+	 * @param frage Frage, die gespeichert werden soll
+	 * @return Eine neue, zu frage gleichwertige, Instanz mit korrekter ID aus der Persistenz
 	 */
-    //TODO: doc tag anpassen
 	public IFrage saveFrage(IFrage frage);
 
 }

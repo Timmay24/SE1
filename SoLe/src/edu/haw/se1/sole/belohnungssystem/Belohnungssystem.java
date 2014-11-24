@@ -52,9 +52,9 @@ public class Belohnungssystem implements IBelohnungssystem {
 	 * @see edu.haw.se1.sole.belohnungssystem.IBelohnungssystem#saveBadge(edu.haw.se1.sole.belohnungssystem.IBadge)
 	 */
 	@Override
-	public boolean saveBadge(IBadge badge) {
+	public IBadge saveBadge(IBadge badge) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	/* (non-Javadoc)

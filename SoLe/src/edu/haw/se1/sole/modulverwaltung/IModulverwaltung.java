@@ -29,11 +29,11 @@ public interface IModulverwaltung {
 	public abstract List<IModul> getModule();
 	
     /**
-	 * Veranlasst die Speicherung der Daten eines Moduls in der Persistenz.
+	 * Veranlasst die Speicherung der Daten eines Modulobjekts in der Persistenz.
 	 * 
 	 * @param modul Modul, das gespeichert werden soll
-	 * @return true, wenn Speicherung erfolgreich
-	 */ //TODO: doc tag anpassen
+	 * @return Eine neue, zu modul gleichwertige, Instanz mit korrekter ID aus der Persistenz
+	 */
 	public IModul saveModul(IModul modul);
 
 }
