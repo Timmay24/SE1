@@ -3,6 +3,7 @@
 /bin/
 /test_data/
 target/
+/.recommenders/
 # OS Files #
 .DS_Store
 *.class
