@@ -1,20 +1,16 @@
 package edu.haw.se1.sole.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 
 import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
+import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultipleChoice;
@@ -58,14 +54,21 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
             String sqlAntwort = sql(SQLSB.insertInto(ANTWORT_TABLE).values(new String[] {"frage_id", "antwort", "korrekt"}));
             this.getJdbcTemplate().update(sqlAntwort, new Object[] {frage_id, antwort.getAntwort(), Oracle.toInt(antwort.isKorrekteAntwort())});
         }
-        return new FrageMultipleChoice(frage_id, frage.getFragestellung(), frage.getModul(), frage.getSchwierigkeitsgrad(), frage.getMusterLoesung());
+        frage.setFrageId(frage_id);
+        return frage;
     }
     
     private final class FrageMultipleChoiceMapper implements RowMapper<FrageMultipleChoice> {
 
         @Override
         public FrageMultipleChoice mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new FrageMultipleChoice(rs.getInt("id"), rs.getString("fragestellung"), modulDao.getModulBy(rs.getInt("modul_id")), new SchwierigkeitsgradTyp(rs.getInt("schwierigkeit")), new MusterloesungMultipleChoice(getMCAntwortenById(rs.getInt("id"))));
+            try {
+                return new FrageMultipleChoice(rs.getInt("id"), rs.getString("fragestellung"), modulDao.getModulBy(rs.getInt("modul_id")), new SchwierigkeitsgradTyp(rs.getInt("schwierigkeit")), new MusterloesungMultipleChoice(getMCAntwortenById(rs.getInt("id"))));
+            } catch (InvalidFrageException e) {
+                System.err.println("FrageMultipleChoice pulled from DB didn't fulfill invariant.");
+                e.printStackTrace();
+            }
+            return null;
         }
 
     }
