@@ -1,6 +1,6 @@
 package edu.haw.se1.sole;
 
-import edu.haw.se1.sole.belohnungssystem.Belohnungssystem;
+import edu.haw.se1.sole.belohnungssystem.BelohnungssystemDummy;
 import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzerverwaltung;
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
@@ -43,7 +43,7 @@ public class DependencyAssembler {
 		this.modulVerwaltung = new ModulverwaltungDummy(persistenceService);
 		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
 		this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-		this.belohnungsSystem = new Belohnungssystem(persistenceService);
+		this.belohnungsSystem = new BelohnungssystemDummy(persistenceService);
 		this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
 		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
@@ -53,7 +53,7 @@ public class DependencyAssembler {
 	    this.modulVerwaltung = new Modulverwaltung(persistenceService);
 	    this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
 	    this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-	    this.belohnungsSystem = new Belohnungssystem(persistenceService);
+	    this.belohnungsSystem = new BelohnungssystemDummy(persistenceService);
 	    this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
 	    this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}

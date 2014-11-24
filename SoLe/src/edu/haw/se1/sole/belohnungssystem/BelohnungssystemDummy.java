@@ -1,12 +1,13 @@
 package edu.haw.se1.sole.belohnungssystem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzer;
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.gruppenverwaltung.ILerngruppe;
 
-public class Belohnungssystem implements IBelohnungssystem {
+public class BelohnungssystemDummy implements IBelohnungssystem {
 	
 	private IPersistenceService persistenceService;
 
@@ -17,7 +18,7 @@ public class Belohnungssystem implements IBelohnungssystem {
 	 * 
 	 * @param persistenceService
 	 */
-	public Belohnungssystem(IPersistenceService persistenceService) {
+	public BelohnungssystemDummy(IPersistenceService persistenceService) {
 		this.persistenceService = persistenceService;
 	}
 
@@ -61,18 +62,16 @@ public class Belohnungssystem implements IBelohnungssystem {
 	 * @see edu.haw.se1.sole.belohnungssystem.IBelohnungssystem#updateBadgesFor(edu.haw.se1.sole.benutzerverwaltung.IBenutzer)
 	 */
 	@Override
-	public void updateBadgesFor(IBenutzer benutzer) {
-		// TODO Auto-generated method stub
-		
+	public List<IBadge> updateBadgesFor(IBenutzer benutzer) {
+	    return new ArrayList<IBadge>();
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.haw.se1.sole.belohnungssystem.IBelohnungssystem#updateBadgesFor(edu.haw.se1.sole.gruppenverwaltung.ILerngruppe)
 	 */
 	@Override
-	public void updateBadgesFor(ILerngruppe lerngruppe) {
-		// TODO Auto-generated method stub
-		
+	public List<IBadge> updateBadgesFor(ILerngruppe lerngruppe) {
+        return new ArrayList<IBadge>();
 	}
 	
 }

@@ -46,13 +46,13 @@ public interface IBelohnungssystem {
 	 * 
 	 * @param benutzer Zu überprüfender Benutzer
 	 */
-	public void updateBadgesFor(IBenutzer benutzer);
+	public List<IBadge> updateBadgesFor(IBenutzer benutzer);
 	
 	/**
 	 * Routine zur Prüfung, ob die Lerngruppe eine neue Badge verdient hat.
 	 * 
 	 * @param lerngruppe Zu überprüfende Lerngruppe
 	 */
-	public void updateBadgesFor(ILerngruppe lerngruppe);
+	public List<IBadge> updateBadgesFor(ILerngruppe lerngruppe);
 
 }
