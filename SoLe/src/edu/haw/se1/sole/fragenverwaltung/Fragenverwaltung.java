@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageFreitext;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice;
@@ -50,7 +51,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	}
 	
 	@Override
-	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		return new FrageFreitext(
 				"freitext",
@@ -60,13 +61,13 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	}
 	
 	@Override
-	public IFrage createFrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	public IFrage createFrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		return new FrageSingleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 	
 	@Override
-	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		return new FrageMultipleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
 	}

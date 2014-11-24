@@ -15,8 +15,10 @@ public interface IMusterloesung {
 	}
 
 	/**
-	 * @param fragenLoesung Zu bewertende Lösung. Wird mit der Musterlösung verglichen.
-	 * @return Angabe der Korrektheit der übergebenen Lösung in Prozent.
+	 * Vergleicht die übergebene Lösung mit sich und drückt die Korrektheit der Lösung in Prozent aus.
+	 * 
+	 * @param fragenLoesung Zu bewertende Lösung
+	 * @return Angabe der Korrektheit der übergebenen Lösung in Prozent
 	 */
 	public ProzentTyp bewerteLoesung(IFragenloesung fragenLoesung);
 
