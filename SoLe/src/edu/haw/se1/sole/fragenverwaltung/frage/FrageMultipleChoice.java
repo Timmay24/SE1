@@ -6,8 +6,8 @@ import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public class FrageMultipleChoice extends FrageBase {
 
-	public FrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException {
-		super(fragestellung, modul, schwierigkeit, musterLoesung);
+	public FrageMultipleChoice(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
+		super(frage_id, fragestellung, modul, schwierigkeit, musterLoesung);
 		this.musterLoesung = musterLoesung;
 	}
 

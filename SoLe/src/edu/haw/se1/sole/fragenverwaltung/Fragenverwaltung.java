@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.dao.FrageDaoMultipleChoiceJDBC;
 import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageFreitext;
@@ -19,7 +20,7 @@ import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingle
 import edu.haw.se1.sole.modulverwaltung.IModul;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 import edu.haw.se1.sole.modulverwaltung.Modul;
-import edu.haw.se1.sole.modulverwaltung.Modulverwaltung;
+import edu.haw.se1.sole.modulverwaltung.ModulverwaltungDummy;
 
 public class Fragenverwaltung implements IFragenverwaltung {
 
@@ -53,7 +54,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
-		return new FrageFreitext(
+		return new FrageFreitext( -1,
 				"freitext",
 				modul,
 				new SchwierigkeitsgradTyp(5),
@@ -63,13 +64,13 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public IFrage createFrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
-		return new FrageSingleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
+		return new FrageSingleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 	
 	@Override
 	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
-		return new FrageMultipleChoice(fragestellung, modul, schwierigkeit, musterLoesung);
+		return new FrageMultipleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 
 	@Override
@@ -91,10 +92,12 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	}
 	
 	@Override
-	public boolean saveFrage(IFrage frage)
+	public IFrage saveFrage(IFrage frage)
 	{
-		// TODO: implement
-		return true;
+	    if (frage instanceof FrageMultipleChoice) {
+	        return new FrageDaoMultipleChoiceJDBC(persistenceService.getDataSource()).saveFrage((FrageMultipleChoice) frage);
+	    }
+		return frage;
 	}
 
 	@Override

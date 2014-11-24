@@ -13,6 +13,7 @@ public abstract class FrageBase implements IFrage {
 	private IModul modul;
 	private SchwierigkeitsgradTyp schwierigkeit;
 	protected IMusterloesung musterLoesung;
+    private int frage_id;
 	
 	/**
 	 * @param fragestellung
@@ -20,8 +21,9 @@ public abstract class FrageBase implements IFrage {
 	 * @param schwierigkeit
 	 * @throws InvalidFrageException 
 	 */
-	protected FrageBase(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException {
-		this.setFragestellung(fragestellung);
+	protected FrageBase(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) {
+		this.frage_id = frage_id;
+        this.setFragestellung(fragestellung);
 		this.setModul(modul);
 		this.setSchwierigkeitsgrad(schwierigkeit);
 		this.setMusterLoesung(musterLoesung);
@@ -101,5 +103,13 @@ public abstract class FrageBase implements IFrage {
 	public ProzentTyp bewerteLoesung(IFragenloesung fragenLoesung) {
 		return this.musterLoesung.bewerteLoesung(fragenLoesung);
 	}
+
+    public int getFrageId() {
+        return frage_id;
+    }
+
+    public void setFrageId(int frage_id) {
+        this.frage_id = frage_id;
+    }
 	
 }

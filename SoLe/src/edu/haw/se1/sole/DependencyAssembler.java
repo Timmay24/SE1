@@ -5,6 +5,7 @@ import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzerverwaltung;
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.IPersistenceService;
+import edu.haw.se1.sole.common.PersistenceService;
 import edu.haw.se1.sole.common.PersistenceServiceStub;
 import edu.haw.se1.sole.fragenverwaltung.Fragenverwaltung;
 import edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung;
@@ -12,6 +13,7 @@ import edu.haw.se1.sole.gruppenverwaltung.Gruppenverwaltung;
 import edu.haw.se1.sole.gruppenverwaltung.IGruppenverwaltung;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 import edu.haw.se1.sole.modulverwaltung.Modulverwaltung;
+import edu.haw.se1.sole.modulverwaltung.ModulverwaltungDummy;
 import edu.haw.se1.sole.sitzungsverwaltung.ISitzungsverwaltung;
 import edu.haw.se1.sole.sitzungsverwaltung.Sitzungsverwaltung;
 
@@ -32,17 +34,28 @@ public class DependencyAssembler {
 	 */
 	public DependencyAssembler() {}
 	
-	/**
+
+    /**
 	 * Erzeugt Komponenteninstanzen und injiziert Referenzen
 	 */
-	public void buildDependencies() {
+	public void buildTestDependencies() {
 		this.persistenceService = new PersistenceServiceStub();
-		this.modulVerwaltung = new Modulverwaltung(persistenceService);
+		this.modulVerwaltung = new ModulverwaltungDummy(persistenceService);
 		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
 		this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
 		this.belohnungsSystem = new Belohnungssystem(persistenceService);
 		this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
 		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+	}
+	
+	public void buildDependencies(IPersistenceService persistenceService) {
+	    this.persistenceService = persistenceService;
+	    this.modulVerwaltung = new Modulverwaltung(persistenceService);
+	    this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
+	    this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
+	    this.belohnungsSystem = new Belohnungssystem(persistenceService);
+	    this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
+	    this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 
 	/**

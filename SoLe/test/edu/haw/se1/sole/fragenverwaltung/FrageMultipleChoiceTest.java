@@ -22,7 +22,7 @@ public class FrageMultipleChoiceTest {
     @Before
     public void setUp() {
         da = new DependencyAssembler();
-		da.buildDependencies();
+		da.buildTestDependencies();
 		fragenVerwaltung = da.getFragenVerwaltung();
 		modulVerwaltung = da.getModulVerwaltung();
     }

@@ -35,5 +35,7 @@ public interface IFrage {
 	 * @return Gibt die Bewertung der Lösung in Prozent zurück
 	 */
 	public ProzentTyp bewerteLoesung(IFragenloesung fragenLoesung);
+	
+	public int getFrageId();
 
 }

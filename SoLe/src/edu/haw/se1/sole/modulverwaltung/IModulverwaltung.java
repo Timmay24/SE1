@@ -15,25 +15,25 @@ public interface IModulverwaltung {
 	 */
 	public abstract IModul createModul(String bezeichnung, String studiengang);
 
-	/**
+    /**
 	 * Gibt die Instanz eines gesuchten Moduls zurück.
 	 * 
 	 * @param bezeichnung Name des gesuchten Moduls
 	 * @return Instanz des gesuchten Moduls
 	 */
-	public abstract IModul getModulBy(String bezeichnung);
+	public abstract IModul getModulBy(int id);
 
 	/**
 	 * @return Gibt Instanzen aller verfügbaren Module in einer Liste zurück
 	 */
 	public abstract List<IModul> getModule();
 	
-	/**
+    /**
 	 * Veranlasst die Speicherung der Daten eines Moduls in der Persistenz.
 	 * 
 	 * @param modul Modul, das gespeichert werden soll
 	 * @return true, wenn Speicherung erfolgreich
-	 */
-	public boolean saveModul(IModul modul);
+	 */ //TODO: doc tag anpassen
+	public IModul saveModul(IModul modul);
 
 }

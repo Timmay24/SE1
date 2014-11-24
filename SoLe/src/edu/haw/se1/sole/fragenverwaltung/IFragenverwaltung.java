@@ -116,6 +116,7 @@ public interface IFragenverwaltung {
 	 * @param frage Frage, die in der DB gespeichert werden soll
 	 * @return true, wenn Speicherung erfolgreich
 	 */
-	public boolean saveFrage(IFrage frage);
+    //TODO: doc tag anpassen
+	public IFrage saveFrage(IFrage frage);
 
 }
