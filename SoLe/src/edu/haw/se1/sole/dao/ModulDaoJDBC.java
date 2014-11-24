@@ -49,21 +49,12 @@ public class ModulDaoJDBC extends JDBCDaoBase implements IModulDao {
     @Override
     public IModul saveModul(IModul modul) {
         String[] columnNames = new String[] {"bezeichnung", "studiengang"};
-        String sqlFrage = sql(SQLSB.insertInto(MODUL_TABLE).values(columnNames));
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        this.getJdbcTemplate().update(
-                new PreparedStatementCreator() {
-                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
-                        PreparedStatement ps = connection.prepareStatement(sqlFrage, columnNames);
-                        ps.setString(1, modul.getBezeichnung());
-                        ps.setString(2, modul.getStudiengang());
-                        return ps;
-                    }
-                },
-                keyHolder);
-        return new Modul(keyHolder.getKey().intValue(), modul.getBezeichnung(), modul.getStudiengang());
+        String sqlModul = sql(SQLSB.insertInto(MODUL_TABLE).values(columnNames));
+        this.getJdbcTemplate().update(sqlModul,
+                new Object[] {modul.getBezeichnung(), modul.getStudiengang()});
+        int modul_id = this.getJdbcTemplate().queryForObject(sql(SQLSB.select("modul_id_sequence.currval").from("dual")), Integer.class);
+        return new Modul(modul_id, modul.getBezeichnung(), modul.getStudiengang());
     }
     
-    //TODO: alle module holen
 
 }
