@@ -36,6 +36,7 @@ public class Modul implements IModul {
     /** OPERATIONS */
 	
 	private boolean invariant() {
+		//TODO: InvalidModulException konform gestalten
 		if (this.bezeichnung != null)
 		if (!this.bezeichnung.isEmpty())
 		if (this.studiengang != null)

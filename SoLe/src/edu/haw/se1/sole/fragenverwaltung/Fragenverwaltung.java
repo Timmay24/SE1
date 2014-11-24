@@ -27,30 +27,46 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	protected IModulverwaltung modulVerwaltung;
 	protected IPersistenceService persistenceService;
 
+	/**
+	 * @param persistenceService
+	 * @param modulVerwaltung
+	 */
 	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung)
 	{
 		this.persistenceService = persistenceService;
 		this.modulVerwaltung = modulVerwaltung;
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungFreitext(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
+	 */
 	@Override
 	public IFragenloesung createFragenloesungFreitext(List<Antwort> loesung, IFrage frage)
 	{
 		return new FragenloesungFreitext(loesung, frage);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungSingleChoice(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
+	 */
 	@Override
 	public IFragenloesung createFragenloesungSingleChoice(List<Antwort> loesung, IFrage frage)
 	{
 		return new FragenloesungSingleChoice(loesung, frage);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungMultipleChoice(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
+	 */
 	@Override
 	public IFragenloesung createFragenloesungMultipleChoice(List<Antwort> loesung, IFrage frage)
 	{
 		return new FragenloesungMultipleChoice(loesung, frage);
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFrageFreitext(java.lang.String, edu.haw.se1.sole.modulverwaltung.IModul, edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp, edu.haw.se1.sole.fragenverwaltung.IMusterloesung)
+	 */
 	@Override
 	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
@@ -61,36 +77,56 @@ public class Fragenverwaltung implements IFragenverwaltung {
 				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))));
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFrageSingleChoice(java.lang.String, edu.haw.se1.sole.modulverwaltung.IModul, edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp, edu.haw.se1.sole.fragenverwaltung.IMusterloesung)
+	 */
 	@Override
 	public IFrage createFrageSingleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		return new FrageSingleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFrageMultipleChoice(java.lang.String, edu.haw.se1.sole.modulverwaltung.IModul, edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp, edu.haw.se1.sole.fragenverwaltung.IMusterloesung)
+	 */
 	@Override
 	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		return new FrageMultipleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createMusterloesungFreitext()
+	 */
 	@Override
 	public MusterloesungFreitext createMusterloesungFreitext()
 	{
+		//TODO: implement
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createMusterloesungSingleChoice(java.util.List)
+	 */
 	@Override
 	public MusterloesungSingleChoice createMusterloesungSingleChoice(List<Antwort> antworten)
 	{
+		//TODO: implement
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createMusterloesungMultipleChoice(java.util.List)
+	 */
 	@Override
 	public MusterloesungMultipleChoice createMusterloesungMultipleChoice(List<Antwort> antworten)
 	{
 		return new MusterloesungMultipleChoice(antworten);
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#saveFrage(edu.haw.se1.sole.fragenverwaltung.IFrage)
+	 */
 	@Override
 	public IFrage saveFrage(IFrage frage)
 	{
@@ -100,6 +136,9 @@ public class Fragenverwaltung implements IFragenverwaltung {
 		return frage;
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#antwort(java.lang.String, boolean)
+	 */
 	@Override
 	public Antwort antwort(String antwort, boolean korrekt) {
 		return new Antwort(antwort, korrekt);

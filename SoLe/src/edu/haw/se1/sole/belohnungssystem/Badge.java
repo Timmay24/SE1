@@ -28,6 +28,7 @@ public class Badge implements IBadge {
 	 * @return true, wenn Invariante der Instanz nicht verletzt ist.
 	 */
 	private boolean invariant() {
+		//TODO: InvalidBadgeException konform gestalten
 		if (this.beschreibung != null)
 		if (!this.beschreibung.isEmpty())
 		if (this.name != null)
