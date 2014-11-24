@@ -6,7 +6,7 @@ import edu.haw.se1.sole.modulverwaltung.IModul;
 
 public class FrageFreitext extends FrageBase {
 
-	public FrageFreitext(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung)
+	public FrageFreitext(int frage_id, String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
 		super(frage_id, fragestellung, modul, schwierigkeit, musterLoesung);
 		this.musterLoesung = musterLoesung; //TIM: muss die hier noch?

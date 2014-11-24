@@ -12,6 +12,7 @@ import edu.haw.se1.sole.common.PersistenceService;
 import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
 import edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung;
+import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultipleChoice;
 import edu.haw.se1.sole.modulverwaltung.IModul;
@@ -45,12 +46,19 @@ public class Main {
 		IModulverwaltung modulVerwaltung = dAssembler.getModulVerwaltung();
 //		IModul modul = modulVerwaltung.createModul("SE1", "AI");
 //		modul = modulVerwaltung.saveModul(modul);
-		IFrage frageMC = fragenVerwaltung.createFrageMultipleChoice("bla",
-		        modulVerwaltung.getModule().get(0),
-		        new SchwierigkeitsgradTyp(1),
-		        new MusterloesungMultipleChoice(Arrays.asList(new Antwort("antwort1", true), new Antwort("antwort2", false))));
-		System.out.println("created frage");
-		System.out.println(fragenVerwaltung.saveFrage(frageMC).getFrageId());
+		IFrage frageMC;
+		try {
+			frageMC = fragenVerwaltung.createFrageMultipleChoice("bla",
+			        modulVerwaltung.getModule().get(0),
+			        new SchwierigkeitsgradTyp(1),
+			        new MusterloesungMultipleChoice(Arrays.asList(new Antwort("antwort1", true), new Antwort("antwort2", false))));
+			System.out.println("created frage");
+			System.out.println(fragenVerwaltung.saveFrage(frageMC).getFrageId());
+		} catch (InvalidFrageException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
 
