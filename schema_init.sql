@@ -77,6 +77,7 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
 CREATE SEQUENCE mcantwort_id_sequence
 START WITH 1
@@ -92,6 +93,7 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
 CREATE SEQUENCE modul_id_sequence
 START WITH 1
@@ -107,6 +109,7 @@ BEGIN
   INTO   :new.id
   FROM   dual;
 END;
+/
 
 CREATE SEQUENCE rolle_id_sequence
 START WITH 1
@@ -116,4 +119,4 @@ nomaxvalue;
 CREATE SEQUENCE badge_id_sequence
 START WITH 1
 INCREMENT BY 1 
-nomaxvalue; 
+nomaxvalue;
