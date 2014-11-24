@@ -41,15 +41,14 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
         return null;
     }
 
-//    @Override
-    @SuppressWarnings("deprecation")
+    @Override
     public IFrage saveFrage(FrageMultipleChoice frage) {
         String[] columnNames = new String[] {"fragestellung", "schwierigkeit", "modul_id"};
         String sqlFrage = sql(SQLSB.insertInto(FRAGE_TABLE).values(columnNames));
         this.getJdbcTemplate().update(
                 sqlFrage,
                 new Object[] {frage.getFragestellung(), frage.getSchwierigkeitsgrad().getSchwierigkeit(), frage.getModul().getModulId()});
-        int frage_id = this.getJdbcTemplate().queryForInt(sql(SQLSB.select("mcfrage_id_sequence.currval").from("dual")));
+        int frage_id = this.getJdbcTemplate().queryForObject(sql(SQLSB.select("mcfrage_id_sequence.currval").from("dual")), Integer.class);
         for (Antwort antwort : ((MusterloesungMultipleChoice)frage.getMusterLoesung()).getAntworten()) {
             String sqlAntwort = sql(SQLSB.insertInto(ANTWORT_TABLE).values(new String[] {"frage_id", "antwort", "korrekt"}));
             this.getJdbcTemplate().update(sqlAntwort, new Object[] {frage_id, antwort.getAntwort(), Oracle.toInt(antwort.isKorrekteAntwort())});
@@ -70,7 +69,6 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
             }
             return null;
         }
-
     }
 
     private List<Antwort> getMCAntwortenById(int antwort_id) {
