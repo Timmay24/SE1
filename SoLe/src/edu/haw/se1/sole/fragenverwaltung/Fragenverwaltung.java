@@ -5,7 +5,6 @@ import java.util.List;
 
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.dao.FrageDaoMultipleChoiceJDBC;
-import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageFreitext;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageSingleChoice;
@@ -18,8 +17,6 @@ import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultip
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingleChoice;
 import edu.haw.se1.sole.modulverwaltung.IModul;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
-import edu.haw.se1.sole.modulverwaltung.Modul;
-import edu.haw.se1.sole.modulverwaltung.ModulverwaltungDummy;
 
 public class Fragenverwaltung implements IFragenverwaltung {
 
