@@ -19,8 +19,6 @@ import edu.haw.se1.sole.sitzungsverwaltung.Sitzungsverwaltung;
 
 public class DependencyAssembler {
 	
-
-	
 	private IModulverwaltung modulVerwaltung;
 	private IBelohnungssystem belohnungsSystem;
 	private IBenutzerverwaltung benutzerVerwaltung;
@@ -66,6 +64,8 @@ public class DependencyAssembler {
 
 	public void buildDependencies(IPersistenceService persistenceService) {
 		resetDependencies();
+		
+		this.persistenceService = persistenceService;
 	    modulVerwaltung = new Modulverwaltung(persistenceService);
 	    belohnungsSystem = new BelohnungssystemDummy(persistenceService);
 	    benutzerVerwaltung = new Benutzerverwaltung(persistenceService, belohnungsSystem);
