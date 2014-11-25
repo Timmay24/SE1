@@ -16,7 +16,7 @@ import edu.haw.se1.sole.fragenverwaltung.IMusterloesung;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
 
-public class FrageMultipleChoiceTest {
+public class FrageMultipleChoiceExceptionTest {
 
 	private DependencyAssembler da;
     private IFragenverwaltung fragenVerwaltung;
