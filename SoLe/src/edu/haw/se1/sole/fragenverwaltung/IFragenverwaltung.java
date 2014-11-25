@@ -2,6 +2,8 @@ package edu.haw.se1.sole.fragenverwaltung;
 
 import java.util.List;
 
+import org.springframework.util.Assert;
+
 import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.modulverwaltung.IModul;
@@ -97,10 +99,12 @@ public interface IFragenverwaltung {
 	public IFragenloesung createFragenloesungMultipleChoice(List<Antwort> loesung, IFrage frage);
 
 	/**
-	 * @param antworten Liste von Antwortmöglichkeiten samt Markierung der korrekten Anworten
-	 * @return Musterlösung zu einer Freitext-Frage
+	 * @param antworten Liste von Antwortmöglichkeiten samt Markierung der korrekten Antworten
+	 * @return Musterlösung zu einer Multiple-Choice-Frage
+	 * @precondition {@code Assert.notNull(antworten)}
+	 * @precondition {@code Assert.notEmpty(antworten)}
 	 */
-	public IMusterloesung createMusterloesungMultipleChoice(List<Antwort> loesung);
+	public IMusterloesung createMusterloesungMultipleChoice(List<Antwort> antworten);
 
 	
 	/** COMMON OPERATIONS */

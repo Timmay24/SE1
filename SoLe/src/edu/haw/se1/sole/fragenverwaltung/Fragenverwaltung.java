@@ -3,6 +3,8 @@ package edu.haw.se1.sole.fragenverwaltung;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.util.Assert;
+
 import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.IPersistenceService;
@@ -130,6 +132,8 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public MusterloesungMultipleChoice createMusterloesungMultipleChoice(List<Antwort> antworten)
 	{
+		Assert.notNull(antworten);
+		Assert.notEmpty(antworten);
 		return new MusterloesungMultipleChoice(antworten);
 	}
 	
