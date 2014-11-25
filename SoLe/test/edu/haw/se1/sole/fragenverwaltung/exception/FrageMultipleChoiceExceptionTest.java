@@ -33,10 +33,10 @@ public class FrageMultipleChoiceExceptionTest {
     @Test
     public void testInvalidFrageExceptionDoesntContainErrors() throws InvalidFrageException {
     	List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
     	
     	IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
     	

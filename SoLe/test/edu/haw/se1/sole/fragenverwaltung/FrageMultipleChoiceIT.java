@@ -43,8 +43,6 @@ public class FrageMultipleChoiceIT {
     private IModulverwaltung modulVerwaltung;
     @Autowired
     DataSource dataSource;
-    private IBelohnungssystem belohnungsSystem;
-    private IBenutzerverwaltung benutzerVerwaltung;
 
     private void setUp() {
         DependencyAssembler dAssembler = new DependencyAssembler();
@@ -53,8 +51,6 @@ public class FrageMultipleChoiceIT {
         dAssembler.buildDependencies(persistenceService);
         fragenVerwaltung = dAssembler.getFragenVerwaltung();
         modulVerwaltung = dAssembler.getModulVerwaltung();
-        belohnungsSystem = dAssembler.getBelohnungsSystem();
-        benutzerVerwaltung = dAssembler.getBenutzerVerwaltung();
     }
     
     @Rollback(true)
@@ -64,10 +60,10 @@ public class FrageMultipleChoiceIT {
         IFrage frage = fragenVerwaltung.createFrageMultipleChoice("bla",
                     modulVerwaltung.getModule().get(0),
                     new SchwierigkeitsgradTyp(1),
-                    new MusterloesungMultipleChoice(Arrays.asList(new Antwort("antwort1", true), new Antwort("antwort2", false))));
-        frage = fragenVerwaltung.saveFrage(frage);
-        assertNotEquals(-1, frage.getFrageId());
-        assertEquals(new ArrayList<IBadge>(), belohnungsSystem.updateBadgesFor(benutzerVerwaltung.getCurrentUser()));;
+                    new MusterloesungMultipleChoice(Arrays.asList(fragenVerwaltung.createAntwort("antwort1", true),
+                    		fragenVerwaltung.createAntwort("antwort2", false))));
+        InteractionResult<IFrage> saveFrage = fragenVerwaltung.saveFrage(frage);
+        assertNotEquals(-1, saveFrage.getInteractionData().getFrageId());
+        assertEquals(new ArrayList<IBadge>(), saveFrage.getBadges());
     }
-
 }

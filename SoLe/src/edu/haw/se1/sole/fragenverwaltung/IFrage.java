@@ -4,7 +4,7 @@ import edu.haw.se1.sole.common.ProzentTyp;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.modulverwaltung.IModul;
 
-public interface IFrage {
+public interface IFrage extends BadgeInteraction {
 	
 	/**
 	 * @return Text der Fragestellung

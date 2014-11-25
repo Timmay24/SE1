@@ -19,15 +19,16 @@ import edu.haw.se1.sole.sitzungsverwaltung.Sitzungsverwaltung;
 
 public class DependencyAssembler {
 	
+
+	
 	private IModulverwaltung modulVerwaltung;
-	private ISitzungsverwaltung sitzungsVerwaltung;
-	private IFragenverwaltung fragenVerwaltung;
 	private IBelohnungssystem belohnungsSystem;
 	private IBenutzerverwaltung benutzerVerwaltung;
+	private IFragenverwaltung fragenVerwaltung;
+	private ISitzungsverwaltung sitzungsVerwaltung;
 	private IGruppenverwaltung gruppenVerwaltung;
 	private IPersistenceService persistenceService;
 
-	
 	/**
 	 * Der DependencyAssembler dient zur Erzeugung aller nötigen
 	 * Komponenteninstanzen und injiziert Referenzen.
@@ -39,23 +40,38 @@ public class DependencyAssembler {
 	 * Erzeugt Komponenteninstanzen und injiziert Referenzen
 	 */
 	public void buildTestDependencies() {
-		this.persistenceService = new PersistenceServiceStub();
-		this.modulVerwaltung = new ModulverwaltungDummy(persistenceService);
-		this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
-		this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-		this.belohnungsSystem = new BelohnungssystemDummy(persistenceService);
-		this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
-		this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+		resetDependencies();
+		persistenceService = new PersistenceServiceStub();
+		modulVerwaltung = new ModulverwaltungDummy(persistenceService);
+		belohnungsSystem = new BelohnungssystemDummy(persistenceService);
+		benutzerVerwaltung = new Benutzerverwaltung(persistenceService, belohnungsSystem);
+		fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+		sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
+		gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 	
+	/**
+	 * Setzt dependencies auf null, damit Fehler in der Reihenfolge von buildDependencies nicht auffallen.
+	 */
+	private void resetDependencies() {
+		persistenceService = null;
+		modulVerwaltung = null;
+		belohnungsSystem = null;
+		benutzerVerwaltung = null;
+		fragenVerwaltung = null;
+		sitzungsVerwaltung = null;
+		gruppenVerwaltung = null;
+	}
+
+
 	public void buildDependencies(IPersistenceService persistenceService) {
-	    this.persistenceService = persistenceService;
-	    this.modulVerwaltung = new Modulverwaltung(persistenceService);
-	    this.fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung);
-	    this.sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-	    this.belohnungsSystem = new BelohnungssystemDummy(persistenceService);
-	    this.benutzerVerwaltung = new Benutzerverwaltung(persistenceService, sitzungsVerwaltung, fragenVerwaltung, belohnungsSystem);
-	    this.gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+		resetDependencies();
+	    modulVerwaltung = new Modulverwaltung(persistenceService);
+	    belohnungsSystem = new BelohnungssystemDummy(persistenceService);
+	    benutzerVerwaltung = new Benutzerverwaltung(persistenceService, belohnungsSystem);
+	    fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+	    sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
+	    gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	}
 
 	/**

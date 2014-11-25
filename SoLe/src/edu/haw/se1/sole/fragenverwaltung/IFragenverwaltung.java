@@ -78,7 +78,7 @@ public interface IFragenverwaltung {
 	 * 
 	 * @param fragestellung Textuelle Aufgabenstellung der Frage
 	 * @param modul	Das Modul, dem die Frage zugeordnet sein soll
-	 * @param schwierigkeit Schwierigkeitsgrad der Frage (1..10 | leicht..schwer)
+	 * @param schwierigkeit Schwierigkeitsgrad der Frage
 	 * @param musterLoesung Musterloesung zur Frage, mit der spaeter eine abgegebene Loesung verglichen werden kann
 	 * @return Instanz der neuen Multiple-Choice-Frage
 	 * @throws InvalidFrageException
@@ -110,7 +110,7 @@ public interface IFragenverwaltung {
 	 * @param korrekt Kennzeichnung, ob richtige, oder falsche Antwort
 	 * @return Antwort mit Kennzeichnung zur Korrektheit
 	 */
-	public Antwort antwort(String antwort, boolean korrekt);
+	public Antwort createAntwort(String antwort, boolean korrekt);
 	
 	/**
 	 * Veranlasst die Speicherung der Daten eines Frageobjekts in der Persistenz.
@@ -118,6 +118,6 @@ public interface IFragenverwaltung {
 	 * @param frage Frage, die gespeichert werden soll
 	 * @return Eine neue, zu frage gleichwertige, Instanz mit korrekter ID aus der Persistenz
 	 */
-	public IFrage saveFrage(IFrage frage);
+	public InteractionResult<IFrage> saveFrage(IFrage frage);
 
 }

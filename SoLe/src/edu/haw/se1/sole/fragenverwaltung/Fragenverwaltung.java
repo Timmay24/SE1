@@ -3,6 +3,8 @@ package edu.haw.se1.sole.fragenverwaltung;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
+import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.dao.FrageDaoMultipleChoiceJDBC;
 import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
@@ -26,15 +28,21 @@ public class Fragenverwaltung implements IFragenverwaltung {
 
 	protected IModulverwaltung modulVerwaltung;
 	protected IPersistenceService persistenceService;
+	private FrageDaoMultipleChoiceJDBC frageDaoMultipleChoiceJDBC;
+	private IBelohnungssystem belohnungsSystem;
+	private IBenutzerverwaltung benutzerVerwaltung;
 
 	/**
 	 * @param persistenceService
 	 * @param modulVerwaltung
 	 */
-	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung)
+	public Fragenverwaltung(IPersistenceService persistenceService, IModulverwaltung modulVerwaltung, IBenutzerverwaltung benutzerVerwaltung, IBelohnungssystem belohnungsSystem)
 	{
 		this.persistenceService = persistenceService;
 		this.modulVerwaltung = modulVerwaltung;
+		this.benutzerVerwaltung = benutzerVerwaltung;
+		this.belohnungsSystem = belohnungsSystem;
+		frageDaoMultipleChoiceJDBC = new FrageDaoMultipleChoiceJDBC(persistenceService.getDataSource());
 	}
 	
 	/* (non-Javadoc)
@@ -74,7 +82,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 				"freitext",
 				modul,
 				new SchwierigkeitsgradTyp(5),
-				new MusterloesungFreitext(Arrays.asList(antwort("die richtige antwort", true))));
+				new MusterloesungFreitext(Arrays.asList(createAntwort("die richtige antwort", true))));
 	}
 	
 	/* (non-Javadoc)
@@ -92,6 +100,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
+		//TODO NULL POINTER ABFANGEN
 		return new FrageMultipleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 
@@ -128,19 +137,21 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#saveFrage(edu.haw.se1.sole.fragenverwaltung.IFrage)
 	 */
 	@Override
-	public IFrage saveFrage(IFrage frage)
+	public InteractionResult<IFrage> saveFrage(IFrage frage)
 	{
+		// TODO return badge with frage
 	    if (frage instanceof FrageMultipleChoice) {
-	        return new FrageDaoMultipleChoiceJDBC(persistenceService.getDataSource()).saveFrage((FrageMultipleChoice) frage);
+	        return new InteractionResult<>(frageDaoMultipleChoiceJDBC.saveFrage((FrageMultipleChoice) frage),
+	        belohnungsSystem.updateBadgesFor(benutzerVerwaltung.getCurrentUser()));
 	    }
-		return frage;
+		return null;
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#antwort(java.lang.String, boolean)
 	 */
 	@Override
-	public Antwort antwort(String antwort, boolean korrekt) {
+	public Antwort createAntwort(String antwort, boolean korrekt) {
 		return new Antwort(antwort, korrekt);
 	}
 }

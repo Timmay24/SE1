@@ -28,10 +28,10 @@ public class FrageMultipleChoiceTest {
     @Test
 	public void testFrageMultipleChoiceWithCorrectInputIsValid() throws InvalidFrageException {
 		List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
 		
 		IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
 		fragenVerwaltung.createFrageMultipleChoice("Is das gut?", modulVerwaltung.createModul("Mocking", "SE1"), new SchwierigkeitsgradTyp(1), musterloesung);
@@ -40,10 +40,10 @@ public class FrageMultipleChoiceTest {
     @Test(expected = InvalidFrageException.class)
     public void testFrageMultipleChoiceWithWrongFragestellungThrowsException() throws InvalidFrageException {
     	List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
     	
     	IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
     	
@@ -53,10 +53,10 @@ public class FrageMultipleChoiceTest {
     @Test(expected = InvalidFrageException.class)
     public void testFrageMultipleChoiceWithWrongModulThrowsException() throws InvalidFrageException {
     	List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
     	
     	IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
     	
@@ -66,10 +66,10 @@ public class FrageMultipleChoiceTest {
     @Test(expected = InvalidFrageException.class)
     public void testFrageMultipleChoiceWithWrongSchwierigkeitsgradThrowsException() throws InvalidFrageException {
     	List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
     	
     	IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
     	
@@ -79,10 +79,10 @@ public class FrageMultipleChoiceTest {
     @Test(expected = InvalidFrageException.class)
     public void testFrageMultipleChoiceWithWrongMusterloesungThrowsException() throws InvalidFrageException {
     	List<Antwort> antworten = Arrays.asList(
-				fragenVerwaltung.antwort("1", false),
-				fragenVerwaltung.antwort("2", false),
-				fragenVerwaltung.antwort("3", true),
-				fragenVerwaltung.antwort("4", false));
+				fragenVerwaltung.createAntwort("1", false),
+				fragenVerwaltung.createAntwort("2", false),
+				fragenVerwaltung.createAntwort("3", true),
+				fragenVerwaltung.createAntwort("4", false));
     	
     	IMusterloesung musterloesung = fragenVerwaltung.createMusterloesungMultipleChoice(antworten);
     	
