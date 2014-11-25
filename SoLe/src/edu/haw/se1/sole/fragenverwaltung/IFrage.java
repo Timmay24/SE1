@@ -17,7 +17,7 @@ public interface IFrage extends BadgeInteraction {
 	public IModul getModul();
 	
 	/**
-	 * @return Musterlösung zur Frage, mit der eine Benutzerlösung verglichen
+	 * @return Musterloesung zur Frage, mit der eine Benutzerloesung verglichen
 	 *         werden kann
 	 */
 	public IMusterloesung getMusterLoesung();
@@ -28,11 +28,11 @@ public interface IFrage extends BadgeInteraction {
 	public SchwierigkeitsgradTyp getSchwierigkeitsgrad();
 	
 	/**
-	 * Vergleicht eine abgegebene Lösung mit der hinterlegten
-	 * Musterlösung der Frage.
+	 * Vergleicht eine abgegebene Loesung mit der hinterlegten
+	 * Musterloesung der Frage.
 	 * 
-	 * @param fragenLoesung Abgegebene Lösung. 
-	 * @return Gibt die Bewertung der Lösung in Prozent zurück
+	 * @param fragenLoesung Abgegebene Loesung. 
+	 * @return Gibt die Bewertung der Loesung in Prozent zurueck
 	 */
 	public ProzentTyp bewerteLoesung(IFragenloesung fragenLoesung);
 	

@@ -15,10 +15,10 @@ public class MusterloesungMultipleChoice extends MusterloesungBase implements IM
 	}
 
 	/**
-	 * Für MC ist vorgesehen, dass es mindestens zwei Antwortmöglichkeiten
+	 * Fuer MC ist vorgesehen, dass es mindestens zwei Antwortmoeglichkeiten
 	 * und mindestens eine richtige Antwort geben muss.
 	 * 
-	 * @return true, falls Bedingungen erfüllt, false, wenn nicht.
+	 * @return true, falls Bedingungen erfuellt, false, wenn nicht.
 	 */
 	@Override
 	public boolean invariant() {
@@ -36,7 +36,7 @@ public class MusterloesungMultipleChoice extends MusterloesungBase implements IM
 	}
 
 	/**
-	 * @return Anzahl als korrekt markierte Antwortmöglichkeiten.
+	 * @return Anzahl als korrekt markierte Antwortmoeglichkeiten.
 	 */
 	private int getAnzahlKorrekterAntworten() {
 		int korrekteAntworten = 0;

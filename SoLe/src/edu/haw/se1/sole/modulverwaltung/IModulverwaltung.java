@@ -10,13 +10,13 @@ public interface IModulverwaltung {
 	 * 
 	 * @param bezeichnung Stichpunkt, der kurz das Themengebiet benennt.
 	 * @param studiengang Studiengang, zu dem ein Modul zugeordnet werden kann.
-	 * 	 	  Module / Themen können, je nach Studiengang, unterschiedlich behandelt werden.
+	 * 	 	  Module / Themen koennen, je nach Studiengang, unterschiedlich behandelt werden.
 	 * @return
 	 */
 	public abstract IModul createModul(String bezeichnung, String studiengang);
 
     /**
-	 * Gibt die Instanz eines gesuchten Moduls zurück.
+	 * Gibt die Instanz eines gesuchten Moduls zurueck.
 	 * 
 	 * @param bezeichnung Name des gesuchten Moduls
 	 * @return Instanz des gesuchten Moduls
@@ -24,7 +24,7 @@ public interface IModulverwaltung {
 	public abstract IModul getModulBy(int id);
 
 	/**
-	 * @return Gibt Instanzen aller verfügbaren Module in einer Liste zurück
+	 * @return Gibt Instanzen aller verfuegbaren Module in einer Liste zurueck
 	 */
 	public abstract List<IModul> getModule();
 	

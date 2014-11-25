@@ -11,6 +11,6 @@ public class FrageFreitext extends FrageBase {
 		super(frage_id, fragestellung, modul, schwierigkeit, musterLoesung);
 		this.musterLoesung = musterLoesung; //TIM: muss die hier noch?
         // in FrageBase haben wir schon this.setMusterLoesung(musterLoesung);
-		// das würde durch den super() Aufruf abgefrühstückt werden.
+		// das wuerde durch den super() Aufruf abgefruehstueckt werden.
 	}
 }

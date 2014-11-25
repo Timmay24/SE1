@@ -15,7 +15,7 @@ public interface IBelohnungssystem {
 	public IBadge createBadge(); //TODO: params are missing
 	
 	/**
-	 * @return Alle verfügbaren Badges.
+	 * @return Alle verfuegbaren Badges.
 	 */
 	public List<IBadge> getBadges();
 	
@@ -36,16 +36,16 @@ public interface IBelohnungssystem {
 	public IBadge saveBadge(IBadge badge);
 	
 	/**
-	 * Routine zur Prüfung, ob der Benutzer eine neue Badge verdient hat.
+	 * Routine zur Pruefung, ob der Benutzer eine neue Badge verdient hat.
 	 * 
-	 * @param benutzer Zu überprüfender Benutzer
+	 * @param benutzer Zu ueberpruefender Benutzer
 	 */
 	public List<IBadge> updateBadgesFor(IBenutzer benutzer);
 	
 	/**
-	 * Routine zur Prüfung, ob die Lerngruppe eine neue Badge verdient hat.
+	 * Routine zur Pruefung, ob die Lerngruppe eine neue Badge verdient hat.
 	 * 
-	 * @param lerngruppe Zu überprüfende Lerngruppe
+	 * @param lerngruppe Zu ueberpruefende Lerngruppe
 	 */
 	public List<IBadge> updateBadgesFor(ILerngruppe lerngruppe);
 

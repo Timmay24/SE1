@@ -27,7 +27,7 @@ public class DependencyAssembler {
 	private IPersistenceService persistenceService;
 
 	/**
-	 * Der DependencyAssembler dient zur Erzeugung aller nötigen
+	 * Der DependencyAssembler dient zur Erzeugung aller noetigen
 	 * Komponenteninstanzen und injiziert Referenzen.
 	 */
 	public DependencyAssembler() {}
@@ -44,7 +44,7 @@ public class DependencyAssembler {
 		benutzerVerwaltung = new Benutzerverwaltung(persistenceService);
 		fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 		sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-		gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+		gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung);
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class DependencyAssembler {
 	    benutzerVerwaltung = new Benutzerverwaltung(persistenceService);
 	    fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	    sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
-	    gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
+	    gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung);
 	}
 
 	/**

@@ -18,7 +18,7 @@ public abstract class FragenloesungBase implements IFragenloesung {
 	protected Date bearbeitungsDatum;
 
 	// muss ggf. noch so erweitert werden, dass direkt bei Erstellung
-	// alle Werte gesetzt sind und die Lösung immutable
+	// alle Werte gesetzt sind und die Loesung immutable
 	
 	/**
 	 * Konstruktor

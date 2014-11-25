@@ -5,20 +5,20 @@ import edu.haw.se1.sole.common.ProzentTyp;
 public interface IMusterloesung {
 
 	/**
-	 * Da es sich um eine Musterlösung handelt,
-	 * liegt die Korrektheit grundsätzlich bei 100%.
+	 * Da es sich um eine Musterloesung handelt,
+	 * liegt die Korrektheit grundsaetzlich bei 100%.
 	 * 
-	 * @return Korrektheit der Lösung.
+	 * @return Korrektheit der Loesung.
 	 */
 	public default ProzentTyp getKorrektheit() {
 		return new ProzentTyp(100);
 	}
 
 	/**
-	 * Vergleicht die übergebene Lösung mit sich und drückt die Korrektheit der Lösung in Prozent aus.
+	 * Vergleicht die uebergebene Loesung mit sich und drueckt die Korrektheit der Loesung in Prozent aus.
 	 * 
-	 * @param fragenLoesung Zu bewertende Lösung
-	 * @return Angabe der Korrektheit der übergebenen Lösung in Prozent
+	 * @param fragenLoesung Zu bewertende Loesung
+	 * @return Angabe der Korrektheit der uebergebenen Loesung in Prozent
 	 */
 	public ProzentTyp bewerteLoesung(IFragenloesung fragenLoesung);
 

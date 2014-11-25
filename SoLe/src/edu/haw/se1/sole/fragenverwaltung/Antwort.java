@@ -3,8 +3,8 @@ package edu.haw.se1.sole.fragenverwaltung;
 public class Antwort {
 
 	/**
-	 * Strukturierter Datentyp, der eine mögliche Antwort darstellt,
-	 * der innerhalb einer Musterlösung als richtige ode falsche Antwort
+	 * Strukturierter Datentyp, der eine moegliche Antwort darstellt,
+	 * der innerhalb einer Musterloesung als richtige ode falsche Antwort
 	 * markiert werden kann.
 	 */
 	

@@ -10,7 +10,6 @@ import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.dao.FrageDaoMultipleChoiceJDBC;
 import edu.haw.se1.sole.fragenverwaltung.exception.InvalidFrageException;
-import edu.haw.se1.sole.fragenverwaltung.frage.FrageBase;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageFreitext;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice;
 import edu.haw.se1.sole.fragenverwaltung.frage.FrageSingleChoice;
@@ -23,8 +22,6 @@ import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultip
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungSingleChoice;
 import edu.haw.se1.sole.modulverwaltung.IModul;
 import edu.haw.se1.sole.modulverwaltung.IModulverwaltung;
-import edu.haw.se1.sole.modulverwaltung.Modul;
-import edu.haw.se1.sole.modulverwaltung.ModulverwaltungDummy;
 
 public class Fragenverwaltung implements IFragenverwaltung {
 
@@ -51,27 +48,31 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungFreitext(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
 	 */
 	@Override
-	public IFragenloesung createFragenloesungFreitext(List<Antwort> loesung, IFrage frage)
+	public IFragenloesung createFragenloesungFreitext(List<Antwort> antworten, IFrage frage)
 	{
-		return new FragenloesungFreitext(loesung, frage);
+		return new FragenloesungFreitext(antworten, frage);
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungSingleChoice(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
 	 */
 	@Override
-	public IFragenloesung createFragenloesungSingleChoice(List<Antwort> loesung, IFrage frage)
+	public IFragenloesung createFragenloesungSingleChoice(List<Antwort> antworten, IFrage frage)
 	{
-		return new FragenloesungSingleChoice(loesung, frage);
+		return new FragenloesungSingleChoice(antworten, frage);
 	}
 
 	/* (non-Javadoc)
 	 * @see edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung#createFragenloesungMultipleChoice(java.util.List, edu.haw.se1.sole.fragenverwaltung.IFrage)
 	 */
 	@Override
-	public IFragenloesung createFragenloesungMultipleChoice(List<Antwort> loesung, IFrage frage)
+	public IFragenloesung createFragenloesungMultipleChoice(List<Antwort> antworten, IFrage frage)
 	{
-		return new FragenloesungMultipleChoice(loesung, frage);
+		Assert.notNull(antworten);
+		Assert.notEmpty(antworten);
+		Assert.notNull(frage);
+		
+		return new FragenloesungMultipleChoice(antworten, frage);
 	}
 	
 	/* (non-Javadoc)
@@ -80,6 +81,8 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public IFrage createFrageFreitext(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
+		Assert.notNull(modul);
+		//STUB
 		return new FrageFreitext( -1,
 				"freitext",
 				modul,
@@ -102,7 +105,11 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public IFrage createFrageMultipleChoice(String fragestellung, IModul modul, SchwierigkeitsgradTyp schwierigkeit, IMusterloesung musterLoesung) throws InvalidFrageException
 	{
-		//TODO NULL POINTER ABFANGEN
+		Assert.notNull(fragestellung);
+		Assert.notNull(modul);
+		Assert.notNull(schwierigkeit);
+		Assert.notNull(musterLoesung);
+		
 		return new FrageMultipleChoice(-1, fragestellung, modul, schwierigkeit, musterLoesung);
 	}
 
@@ -134,6 +141,7 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	{
 		Assert.notNull(antworten);
 		Assert.notEmpty(antworten);
+		
 		return new MusterloesungMultipleChoice(antworten);
 	}
 	
@@ -143,8 +151,9 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	@Override
 	public InteractionResult<IFrage> saveFrage(IFrage frage)
 	{
-		// TODO return badge with frage
-	    if (frage instanceof FrageMultipleChoice) {
+	    Assert.notNull(frage);
+	    
+		if (frage instanceof FrageMultipleChoice) {
 	        return new InteractionResult<>(frageDaoMultipleChoiceJDBC.saveFrage((FrageMultipleChoice) frage),
 	        belohnungsSystem.updateBadgesFor(benutzerVerwaltung.getCurrentUser()));
 	    }
@@ -156,6 +165,9 @@ public class Fragenverwaltung implements IFragenverwaltung {
 	 */
 	@Override
 	public Antwort createAntwort(String antwort, boolean korrekt) {
+		Assert.notNull(antwort);
+		Assert.hasText(antwort);
+		
 		return new Antwort(antwort, korrekt);
 	}
 }

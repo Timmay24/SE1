@@ -12,9 +12,9 @@ public class BelohnungssystemDummy implements IBelohnungssystem {
 	private IPersistenceService persistenceService;
 
 	/**
-	 * Das Belohnungssystem verwaltet Badges und prüft nach Nutzer-Interaktionen
+	 * Das Belohnungssystem verwaltet Badges und prueft nach Nutzer-Interaktionen
 	 * mit dem System, ob Benutzer oder Lerngruppen neue Badges verdienen und
-	 * fügt ihren Profilen ggf. neue Badges hinzu.
+	 * fuegt ihren Profilen ggf. neue Badges hinzu.
 	 * 
 	 * @param persistenceService
 	 */

@@ -33,7 +33,7 @@ public abstract class FrageBase implements IFrage {
 	
 	/**
 	 * @return true, wenn Invariante der Instanz nicht verletzt wird
-	 * @throws InvalidFrageException 
+	 * @throws InvalidFrageException
 	 */
 	private void invariant() throws InvalidFrageException
 	{

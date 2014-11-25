@@ -7,13 +7,13 @@ public class Badge implements IBadge {
 	private String bildPfad;
 
 	/**
-	 * Badge ist eine Klasse für Abzeichen, welche im Rahmen der Softwarenutzung
-	 * verdient werden können. Sie repräsentieren Erfolge oder Meilensteine
+	 * Badge ist eine Klasse fuer Abzeichen, welche im Rahmen der Softwarenutzung
+	 * verdient werden koennen. Sie repraesentieren Erfolge oder Meilensteine
 	 * eines Nutzers oder einer Lerngruppe.
 	 * 
 	 * @param name Name der Badge
-	 * @param beschreibung Beschreibt die Badge näher bzw. wofür sie verdient werden kann
-	 * @param bildPfad Pfad zum Bild, das für eine Badge in der GUI angezeigt werden soll
+	 * @param beschreibung Beschreibt die Badge naeher bzw. wofuer sie verdient werden kann
+	 * @param bildPfad Pfad zum Bild, das fuer eine Badge in der GUI angezeigt werden soll
 	 */
 	public Badge(String name, String beschreibung, String bildPfad) {
 		this.name = name;
