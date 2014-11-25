@@ -47,7 +47,7 @@ public class MainWindow {
 		btnVollDerButton = new JButton("VOLL der Button....");
 		btnVollDerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
+				System.exit(0);
 			}
 		});
 		frame.getContentPane().add(btnVollDerButton, BorderLayout.CENTER);
