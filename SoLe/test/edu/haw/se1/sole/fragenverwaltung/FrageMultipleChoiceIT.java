@@ -2,6 +2,7 @@ package edu.haw.se1.sole.fragenverwaltung;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.sql.DataSource;
@@ -22,6 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.haw.se1.sole.AppConfig;
 import edu.haw.se1.sole.DependencyAssembler;
+import edu.haw.se1.sole.belohnungssystem.IBadge;
+import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
+import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.PersistenceService;
 import edu.haw.se1.sole.fragenverwaltung.frage.SchwierigkeitsgradTyp;
 import edu.haw.se1.sole.fragenverwaltung.frage.musterloesung.MusterloesungMultipleChoice;
@@ -39,6 +43,8 @@ public class FrageMultipleChoiceIT {
     private IModulverwaltung modulVerwaltung;
     @Autowired
     DataSource dataSource;
+    private IBelohnungssystem belohnungsSystem;
+    private IBenutzerverwaltung benutzerVerwaltung;
 
     private void setUp() {
         DependencyAssembler dAssembler = new DependencyAssembler();
@@ -47,7 +53,8 @@ public class FrageMultipleChoiceIT {
         dAssembler.buildDependencies(persistenceService);
         fragenVerwaltung = dAssembler.getFragenVerwaltung();
         modulVerwaltung = dAssembler.getModulVerwaltung();
-        
+        belohnungsSystem = dAssembler.getBelohnungsSystem();
+        benutzerVerwaltung = dAssembler.getBenutzerVerwaltung();
     }
     
     @Rollback(true)
@@ -60,6 +67,7 @@ public class FrageMultipleChoiceIT {
                     new MusterloesungMultipleChoice(Arrays.asList(new Antwort("antwort1", true), new Antwort("antwort2", false))));
         frage = fragenVerwaltung.saveFrage(frage);
         assertNotEquals(-1, frage.getFrageId());
+        assertEquals(new ArrayList<IBadge>(), belohnungsSystem.updateBadgesFor(benutzerVerwaltung.getCurrentUser()));;
     }
 
 }
