@@ -5,7 +5,6 @@ import edu.haw.se1.sole.belohnungssystem.IBelohnungssystem;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzerverwaltung;
 import edu.haw.se1.sole.benutzerverwaltung.IBenutzerverwaltung;
 import edu.haw.se1.sole.common.IPersistenceService;
-import edu.haw.se1.sole.common.PersistenceService;
 import edu.haw.se1.sole.common.PersistenceServiceStub;
 import edu.haw.se1.sole.fragenverwaltung.Fragenverwaltung;
 import edu.haw.se1.sole.fragenverwaltung.IFragenverwaltung;
@@ -42,7 +41,7 @@ public class DependencyAssembler {
 		persistenceService = new PersistenceServiceStub();
 		modulVerwaltung = new ModulverwaltungDummy(persistenceService);
 		belohnungsSystem = new BelohnungssystemDummy(persistenceService);
-		benutzerVerwaltung = new Benutzerverwaltung(persistenceService, belohnungsSystem);
+		benutzerVerwaltung = new Benutzerverwaltung(persistenceService);
 		fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 		sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
 		gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
@@ -68,7 +67,7 @@ public class DependencyAssembler {
 		this.persistenceService = persistenceService;
 	    modulVerwaltung = new Modulverwaltung(persistenceService);
 	    belohnungsSystem = new BelohnungssystemDummy(persistenceService);
-	    benutzerVerwaltung = new Benutzerverwaltung(persistenceService, belohnungsSystem);
+	    benutzerVerwaltung = new Benutzerverwaltung(persistenceService);
 	    fragenVerwaltung = new Fragenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);
 	    sitzungsVerwaltung = new Sitzungsverwaltung(persistenceService, fragenVerwaltung, modulVerwaltung);
 	    gruppenVerwaltung = new Gruppenverwaltung(persistenceService, modulVerwaltung, benutzerVerwaltung, belohnungsSystem);

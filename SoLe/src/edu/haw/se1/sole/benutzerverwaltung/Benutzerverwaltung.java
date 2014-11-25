@@ -7,12 +7,10 @@ import edu.haw.se1.sole.sitzungsverwaltung.ISitzungsverwaltung;
 
 public class Benutzerverwaltung implements IBenutzerverwaltung {
 
-	private IBelohnungssystem belohnungsSystem;
 	private IPersistenceService persistenceService;
 
-	public Benutzerverwaltung(IPersistenceService persistenceService, IBelohnungssystem belohnungsSystem) {
+	public Benutzerverwaltung(IPersistenceService persistenceService) {
 		this.persistenceService = persistenceService;
-		this.belohnungsSystem = belohnungsSystem;
 	}
 
     @Override
