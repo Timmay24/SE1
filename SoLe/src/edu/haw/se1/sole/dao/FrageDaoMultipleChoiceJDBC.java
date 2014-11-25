@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
@@ -25,7 +28,6 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
 
     public FrageDaoMultipleChoiceJDBC(DataSource dataSource) {
         super(dataSource);
-        modulDao = new ModulDaoJDBC(dataSource);
     }
 
     @Override

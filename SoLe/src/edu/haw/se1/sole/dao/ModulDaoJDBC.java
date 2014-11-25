@@ -12,14 +12,14 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import edu.haw.se1.sole.modulverwaltung.IModul;
 import edu.haw.se1.sole.modulverwaltung.Modul;
 import edu.haw.util.SQLSB;
 
 public class ModulDaoJDBC extends JDBCDaoBase implements IModulDao {
-
-
+    
 
     private final class ModulMapper implements RowMapper<IModul> {
         @Override
