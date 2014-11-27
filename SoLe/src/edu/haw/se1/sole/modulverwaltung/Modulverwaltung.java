@@ -2,6 +2,8 @@ package edu.haw.se1.sole.modulverwaltung;
 
 import java.util.List;
 
+import org.springframework.util.Assert;
+
 import edu.haw.se1.sole.common.IPersistenceService;
 import edu.haw.se1.sole.dao.ModulDaoJDBC;
 
@@ -22,6 +24,8 @@ public class Modulverwaltung implements IModulverwaltung {
      */
     @Override
     public IModul createModul(String bezeichnung, String studiengang) {
+    	Assert.notNull(bezeichnung);
+    	Assert.notNull(studiengang);
         // TODO Auto-generated method stub
         return new Modul(bezeichnung, studiengang);
     }
@@ -48,6 +52,7 @@ public class Modulverwaltung implements IModulverwaltung {
      */
     @Override
     public IModul saveModul(IModul modul) {
+    	Assert.notNull(modul);
         return new ModulDaoJDBC(persistenceService.getDataSource()).saveModul(modul);
     }
 

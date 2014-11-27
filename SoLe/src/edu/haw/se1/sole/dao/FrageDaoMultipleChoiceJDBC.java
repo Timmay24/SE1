@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import edu.haw.se1.sole.fragenverwaltung.Antwort;
 import edu.haw.se1.sole.fragenverwaltung.IFrage;
@@ -43,8 +44,13 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
         return null;
     }
 
+    /* (non-Javadoc)
+     * @see edu.haw.se1.sole.dao.IFrageMultipleChoiceDao#saveFrage(edu.haw.se1.sole.fragenverwaltung.frage.FrageMultipleChoice)
+     */
     @Override
     public IFrage saveFrage(FrageMultipleChoice frage) {
+    	Assert.notNull(frage);
+    	
         String[] columnNames = new String[] {"fragestellung", "schwierigkeit", "modul_id"};
         String sqlFrage = sql(SQLSB.insertInto(FRAGE_TABLE).values(columnNames));
         this.getJdbcTemplate().update(
@@ -64,7 +70,7 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
         @Override
         public FrageMultipleChoice mapRow(ResultSet rs, int rowNum) throws SQLException {
             try {
-                return new FrageMultipleChoice(rs.getInt("id"), rs.getString("fragestellung"), modulDao.getModulBy(rs.getInt("modul_id")), new SchwierigkeitsgradTyp(rs.getInt("schwierigkeit")), new MusterloesungMultipleChoice(getMCAntwortenById(rs.getInt("id"))));
+                return new FrageMultipleChoice(rs.getInt("id"), rs.getString("fragestellung"), modulDao.getModulBy(rs.getInt("modul_id")), new SchwierigkeitsgradTyp(rs.getInt("schwierigkeit")), new MusterloesungMultipleChoice(getMultipleChoiceAntwortenBy(rs.getInt("id"))));
             } catch (InvalidFrageException e) {
                 System.err.println("FrageMultipleChoice pulled from DB didn't fulfill invariant.");
                 e.printStackTrace();
@@ -73,7 +79,7 @@ public class FrageDaoMultipleChoiceJDBC extends JDBCDaoBase implements IFrageMul
         }
     }
 
-    private List<Antwort> getMCAntwortenById(int antwort_id) {
+    private List<Antwort> getMultipleChoiceAntwortenBy(int antwort_id) {
         String sql = sql(SQLSB.select("*").from(ANTWORT_TABLE).where("antwort_id = ?"));
         return this.getJdbcTemplate().query(sql, new Integer[]{antwort_id}, new RowMapper<Antwort>() {
 

@@ -3,6 +3,8 @@ package edu.haw.se1.sole.modulverwaltung;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.util.Assert;
+
 import edu.haw.se1.sole.common.IPersistenceService;
 
 public class ModulverwaltungDummy implements IModulverwaltung {
@@ -22,6 +24,8 @@ public class ModulverwaltungDummy implements IModulverwaltung {
 	 */
 	@Override
 	public IModul createModul(String bezeichnung, String studiengang) {
+		Assert.notNull(bezeichnung);
+    	Assert.notNull(studiengang);
 		return new Modul(bezeichnung, studiengang);
 	}
 	
@@ -30,7 +34,7 @@ public class ModulverwaltungDummy implements IModulverwaltung {
 	 */
 	@Override
 	public IModul getModulBy(int id) {
-		// gemockt mit Liste statt DB Persistenz
+		// gestubbed mit Liste statt DB Persistenz
 		for (IModul m : getModule()) {
 			if (m.getModulId() == id);
 				return m;
@@ -50,6 +54,7 @@ public class ModulverwaltungDummy implements IModulverwaltung {
 	@Override
 	public IModul saveModul(IModul modul)
 	{
+		Assert.notNull(modul);
 		//stub
 		return modul;
 	}

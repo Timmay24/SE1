@@ -13,6 +13,11 @@ public interface IFrageMultipleChoiceDao {
     
     public List<IFrage> getAllMultipleChoiceFragen();
     
+    /**
+     * @param frage Frage, die in der Persistenz gespeichert werden soll
+     * @return Ein neues Objekt der gespeicherten Frage mit aktualisierter ID aus der Persistenz
+     * @pre {@code Assert.notNull(frage)}
+     */
     public IFrage saveFrage(FrageMultipleChoice frage);
 
 }

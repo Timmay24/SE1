@@ -3,6 +3,8 @@ package edu.haw.se1.sole.gruppenverwaltung;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.util.Assert;
+
 import edu.haw.se1.sole.belohnungssystem.Badge;
 import edu.haw.se1.sole.belohnungssystem.IBadge;
 import edu.haw.se1.sole.benutzerverwaltung.Benutzer;
@@ -61,6 +63,7 @@ public class Lerngruppe implements ILerngruppe {
 	 */
 	@Override
 	public boolean addMitglied(IBenutzer benutzer) {
+		Assert.notNull(benutzer);
 		return getMitglieder().add(benutzer);
 	}
 	
@@ -164,7 +167,7 @@ public class Lerngruppe implements ILerngruppe {
 	 * @see edu.haw.se1.sole.gruppenverwaltung.ILerngruppe#membersMatch(edu.haw.se1.sole.gruppenverwaltung.ILerngruppe)
 	 */
 	@Override
-	public boolean membersMatch(ILerngruppe other) {
+	public boolean sameMembersAsIn(ILerngruppe other) {
 		if (other != null) {
 			if (this.getAnzahlMitglieder() == other.getAnzahlMitglieder()) {
 				return this.getMitglieder().containsAll(other.getMitglieder());
@@ -206,6 +209,7 @@ public class Lerngruppe implements ILerngruppe {
 
 	@Override
 	public boolean removeMitglied(IBenutzer benutzer) {
+		Assert.notNull(benutzer);
 		return getMitglieder().remove(benutzer);
 	}
 }

@@ -73,6 +73,6 @@ public interface ILerngruppe {
 	 * @param other
 	 * @return
 	 */
-	public abstract boolean membersMatch(ILerngruppe other);
+	public abstract boolean sameMembersAsIn(ILerngruppe other);
 
 }
